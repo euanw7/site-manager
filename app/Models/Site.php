@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Site extends Model
 {
     use HasFactory;
+
+    public function job_listing()
+    {
+        return $this->hasMany(JobListing::class);
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

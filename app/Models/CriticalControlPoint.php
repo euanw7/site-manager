@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class CriticalControlPoint extends Model
 {
     use HasFactory;
+
+    public function job_phase()
+    {
+        return $this->hasOne(JobPhase::class);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('rejections', function (Blueprint $table) {
             $table->id();
             $table->string('message', 255);
+            $table->integer('rejectable_id');
+            $table->string('rejectable_type');
             $table->timestamps();
         });
     }
