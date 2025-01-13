@@ -14,7 +14,7 @@ class AuditFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'content' => fake()->realText(mt_rand(1, 1020))
         ];
     }
 }

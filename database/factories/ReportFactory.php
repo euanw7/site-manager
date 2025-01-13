@@ -14,7 +14,7 @@ class ReportFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'issues' => fake()->realText(mt_rand(1, 1020)),
         ];
     }
 }

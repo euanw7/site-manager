@@ -14,7 +14,8 @@ class NotificationFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'content' => fake()->realText(mt_rand(1, 255)),
+            'date_received' => fake()->date('Y-m-d', 'now'),
         ];
     }
 }

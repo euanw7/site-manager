@@ -14,7 +14,7 @@ class HoursWorkedFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'hours' => fake()->randomFloat($nbMaxDecimals = 2, $min = 0)
         ];
     }
 }

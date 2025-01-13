@@ -14,7 +14,9 @@ class UserTaskFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => fake()->realText(mt_rand(1, 50)),
+            'description' => fake()->realText(mt_rand(1, 255)),
+            'due_date' => fake()->date('Y-m-d'),
         ];
     }
 }
