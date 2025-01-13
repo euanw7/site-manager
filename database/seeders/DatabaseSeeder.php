@@ -2,8 +2,19 @@
 
 namespace Database\Seeders;
 
+use App\Models\Audit;
+use App\Models\CriticalControlPoint;
+use App\Models\HoursWorked;
+use App\Models\JobListing;
+use App\Models\JobPhase;
+use App\Models\JobTask;
+use App\Models\Notification;
+use App\Models\Product;
+use App\Models\Rejection;
+use App\Models\Report;
+use App\Models\Site;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\UserTask;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +24,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $this->call([
+            AuditTableSeeder::class,
+            CriticalControlPointTableSeeder::class,
+            HoursWorkedTableSeeder::class,
+            JobListingTableSeeder::class,
+            JobPhaseTableSeeder::class,
+            JobTaskTableSeeder::class,
+            NotificationTableSeeder::class,
+            ProductTableSeeder::class,
+            RejectionTableSeeder::class,
+            ReportTableSeeder::class,
+            SiteTableSeeder::class,
+            UserTableSeeder::class,
+            UserTaskTableSeeder::class,
         ]);
     }
 }
