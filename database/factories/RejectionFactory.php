@@ -24,7 +24,7 @@ class RejectionFactory extends Factory
         $rejectableInstance = $rejectableType::query()->inRandomOrder()->first();
 
         return [
-            'message' => fake()->realText(mt_rand(1, 255)),
+            'message' => fake()->realText(mt_rand(10, 255)),
             'rejectable_id' => $rejectableInstance ? $rejectableInstance->id : null,
             'rejectable_type' => $rejectableType,
         ];

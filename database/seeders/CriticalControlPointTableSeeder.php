@@ -14,7 +14,7 @@ class CriticalControlPointTableSeeder extends Seeder
     public function run(): void
     {
         CriticalControlPoint::factory(5)
-        ->has(Product::factory(2))
+        //->has(Product::factory(2))
         ->create();
     }
 }

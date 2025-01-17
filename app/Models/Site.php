@@ -9,7 +9,7 @@ class Site extends Model
 {
     use HasFactory;
 
-    public function job_listing()
+    public function job_listings()
     {
         return $this->hasMany(JobListing::class);
     }

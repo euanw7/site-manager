@@ -14,7 +14,7 @@ class ProductTableSeeder extends Seeder
     public function run(): void
     {
         Product::factory(10)
-        ->has(CriticalControlPoint::factory(5))
+        //->has(CriticalControlPoint::factory(5))
         ->create();
     }
 }

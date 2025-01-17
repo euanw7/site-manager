@@ -14,22 +14,22 @@ class JobListing extends Model
         return $this->hasOne(Site::class);
     }
     
-    public function user_task()
+    public function user_tasks()
     {
         return $this->hasMany(UserTask::class);
     }
 
-    public function report()
+    public function reports()
     {
         return $this->hasMany(Report::class);
     }
 
-    public function job_phase()
+    public function job_phases()
     {
         return $this->hasMany(JobPhase::class);
     }
 
-    public function hours_worked()
+    public function hours_workeds()
     {
         return $this->hasMany(HoursWorked::class);
     }

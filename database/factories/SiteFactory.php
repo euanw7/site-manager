@@ -15,9 +15,9 @@ class SiteFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->realText(mt_rand(1, 50)),
+            'name' => fake()->realText(mt_rand(10, 50)),
             'address' => fake()->address(),
-            'EmployeeInstructions' => fake()->realText(mt_rand(1, 510)),
+            'EmployeeInstructions' => fake()->realText(mt_rand(10, 510)),
             'job_listing_id' => fake()->numberBetween(1, JobListing::count()),
         ];
     }

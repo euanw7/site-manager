@@ -14,7 +14,7 @@ class JobPhase extends Model
         return $this->hasOne(JobListing::class);
     }
 
-    public function job_task()
+    public function job_tasks()
     {
         return $this->hasMany(JobTask::class);
     }

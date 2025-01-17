@@ -66,12 +66,12 @@ class User extends Authenticatable
         return $this->hasMany(Rejection::class);
     }
 
-    public function hours_worked()
+    public function hours_workeds()
     {
         return $this->hasMany(HoursWorked::class);
     }
 
-    public function user_task()
+    public function user_tasks()
     {
         return $this->hasMany(UserTask::class);
     }

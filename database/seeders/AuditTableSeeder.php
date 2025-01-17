@@ -14,7 +14,7 @@ class AuditTableSeeder extends Seeder
     public function run(): void
     {
         Audit::factory(2)
-        ->has(JobListing::factory(2))
+        //->has(JobListing::factory(2))
         ->create();
     }
 }

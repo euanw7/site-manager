@@ -15,8 +15,8 @@ class JobListingTableSeeder extends Seeder
     public function run(): void
     {
         JobListing::factory(5)
-        ->has(Audit::factory(1))
-        ->has(User::factory(5))
+        //Audit::factory(1))
+        //->has(User::factory(5))
         ->create();
     }
 }

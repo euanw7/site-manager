@@ -15,7 +15,7 @@ class CriticalControlPointFactory extends Factory
     public function definition(): array
     {
         return [
-            'method_statement' => fake()->realText(mt_rand(1, 1020)),
+            'method_statement' => fake()->realText(mt_rand(10, 1020)),
             'product_coverage' => fake()->randomFloat(2),
             'product_usage' => fake()->randomFloat(2),
             'product_tolerance' => fake()->randomFloat(2),

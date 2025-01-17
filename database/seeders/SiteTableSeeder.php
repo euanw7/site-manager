@@ -14,7 +14,7 @@ class SiteTableSeeder extends Seeder
     public function run(): void
     {
         Site::factory(2)
-        ->has(User::factory(5))
+        //->has(User::factory(5))
         ->create();
     }
 }

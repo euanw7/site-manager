@@ -19,8 +19,8 @@ class JobListingFactory extends Factory
     {
         return [
             'job_number' => fake()->numberBetween(1000, 5000),
-            'title' => fake()->realText(mt_rand(1, 50)),
-            'description' => fake()->realText(mt_rand(1, 255)),
+            'title' => fake()->realText(mt_rand(10, 50)),
+            'description' => fake()->realText(mt_rand(10, 255)),
             'start_date' => fake()->date('Y-m-d'),
             'end_date'=> fake()->date('Y-m-d'),
             'is_active' => true,
