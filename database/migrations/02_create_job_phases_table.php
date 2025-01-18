@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\CriticalControlPoint;
+use App\Models\JobListing;
 use App\Models\JobTask;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,9 +20,8 @@ return new class extends Migration
             $table->string('description', 255);
             $table->dateTime('start_date');
             $table->dateTime('end_date');
-
-            $table->foreignIdFor(JobTask::class)->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignIdFor(CriticalControlPoint::class)->cascadeOnDelete()->cascadeOnUpdate();
+            
+            $table->foreignIdFor(JobListing::class)->cascadeOnDelete()->cascadeOnUpdate();
 
             $table->timestamps();
         });

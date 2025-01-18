@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AuditFactory extends Factory
@@ -14,7 +15,8 @@ class AuditFactory extends Factory
     public function definition(): array
     {
         return [
-            'content' => fake()->realText(mt_rand(10, 1020))
+            'content' => fake()->realText(mt_rand(10, 1020)),
+            'user_id' => fake()->numberBetween(1, User::count()),
         ];
     }
 }

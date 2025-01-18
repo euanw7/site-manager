@@ -24,10 +24,6 @@ class JobListingFactory extends Factory
             'start_date' => fake()->date('Y-m-d'),
             'end_date'=> fake()->date('Y-m-d'),
             'is_active' => true,
-            'user_task_id' => fake()->numberBetween(1, UserTask::count()),
-            'report_id' => fake()->numberBetween(1, Report::count()),
-            'job_phase_id' => fake()->numberBetween(1, JobPhase::count()),
-            'hours_worked_id' => fake()->numberBetween(1, HoursWorked::count()),
         ];
     }
 }

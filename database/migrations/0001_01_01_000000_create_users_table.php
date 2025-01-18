@@ -25,14 +25,6 @@ return new class extends Migration
             $table->boolean('has_allowed_emails')->default(false);
             $table->string('password');
             $table->rememberToken();
-
-            $table->foreignIdFor(Notification::class)->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignIdFor(Audit::class)->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignIdFor(Report::class)->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignIdFor(Rejection::class)->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignIdFor(HoursWorked::class)->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignIdFor(UserTask::class)->cascadeOnDelete()->cascadeOnUpdate();
-
             $table->timestamps();
         });
 

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\CriticalControlPoint;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class JobTaskFactory extends Factory
@@ -18,6 +19,7 @@ class JobTaskFactory extends Factory
             'description' => fake()->realText(mt_rand(10, 255)),
             'start_date' => fake()->date('Y-m-d'),
             'end_date'=> fake()->date('Y-m-d'),
+            'critical_control_point_id' => fake()->unique()->numberBetween(1, CriticalControlPoint::count()),
         ];
     }
 }

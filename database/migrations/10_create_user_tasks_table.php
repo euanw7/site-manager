@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\JobListing;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,6 +18,10 @@ return new class extends Migration
             $table->string('title', 50);
             $table->string('description', 255);
             $table->dateTime('due_date');
+            
+            $table->foreignIdFor(User::class)->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(JobListing::class)->cascadeOnDelete()->cascadeOnUpdate();
+
             $table->timestamps();
         });
     }

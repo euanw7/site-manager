@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\CriticalControlPoint;
+use App\Models\JobListing;
+use App\Models\JobPhase;
 use App\Models\JobTask;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,7 +23,8 @@ class JobPhaseFactory extends Factory
             'start_date' => fake()->date('Y-m-d'),
             'end_date'=> fake()->date('Y-m-d'),
             'job_task_id' => fake()->numberBetween(1, JobTask::count()),
-            'critical_control_point_id' => fake()->numberBetween(1, CriticalControlPoint::count()),
+            'job_listing_id' => fake()->numberBetween(1, JobListing::count()),
+            'job_phase_id' => fake()->numberBetween(1, JobPhase::count()),
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\HoursWorked;
 use App\Models\JobTask;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RejectionFactory extends Factory
@@ -27,6 +28,7 @@ class RejectionFactory extends Factory
             'message' => fake()->realText(mt_rand(10, 255)),
             'rejectable_id' => $rejectableInstance ? $rejectableInstance->id : null,
             'rejectable_type' => $rejectableType,
+            'user_id' => fake()->numberBetween(1, User::count()),
         ];
     }
 }
