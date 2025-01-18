@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Audit;
 use Illuminate\Database\Seeder;
-use App\Models\JobListing;
 
 class AuditTableSeeder extends Seeder
 {
@@ -13,8 +12,6 @@ class AuditTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Audit::factory(2)
-        //->has(JobListing::factory(2))
-        ->create();
+        Audit::factory(2)->create();
     }
 }

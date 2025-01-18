@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\CriticalControlPoint;
 use App\Models\Product;
 use Illuminate\Database\Seeder;
 
@@ -13,8 +12,6 @@ class ProductTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Product::factory(10)
-        //->has(CriticalControlPoint::factory(5))
-        ->create();
+        Product::factory(10)->create();
     }
 }

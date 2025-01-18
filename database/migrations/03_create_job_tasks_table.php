@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\CriticalControlPoint;
 use App\Models\JobPhase;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,8 +20,10 @@ return new class extends Migration
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->boolean('approved')->default(false);
+            $table->boolean('quality_critical');
 
             $table->foreignIdFor(JobPhase::class)->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(CriticalControlPoint::class)->cascadeOnDelete()->cascadeOnUpdate()->nullable();
 
             $table->timestamps();
         });

@@ -12,7 +12,7 @@ class JobTask extends Model
 
     public function job_phase()
     {
-        return $this->hasOne(JobPhase::class);
+        return $this->belongsTo(JobPhase::class);
     }
 
     public function critical_control_point()

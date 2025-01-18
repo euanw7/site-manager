@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\JobListing;
-use App\Models\Site;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -14,9 +12,6 @@ class UserTableSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)
-        //->has(Site::factory(5))
-        //->has(JobListing::factory(2))
-        ->create();
+        User::factory(10)->create();
     }
 }

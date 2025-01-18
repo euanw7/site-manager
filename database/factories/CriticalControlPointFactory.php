@@ -20,7 +20,6 @@ class CriticalControlPointFactory extends Factory
             'product_usage' => fake()->randomFloat(2),
             'product_tolerance' => fake()->randomFloat(2),
             'importance' => fake()->numberBetween(1, 3),
-            'job_phase_id' => fake()->numberBetween(1, JobPhase::count()),
         ];
     }
 }

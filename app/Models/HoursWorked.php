@@ -12,12 +12,12 @@ class HoursWorked extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function job_listing()
     {
-        return $this->hasOne(JobListing::class);
+        return $this->belongsTo(JobListing::class);
     }
 
     public function rejections(): MorphMany

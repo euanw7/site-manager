@@ -11,7 +11,7 @@ class JobPhase extends Model
 
     public function job_listing()
     {
-        return $this->hasOne(JobListing::class);
+        return $this->belongsTo(JobListing::class);
     }
 
     public function job_tasks()

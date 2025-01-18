@@ -17,18 +17,29 @@ class RejectionFactory extends Factory
     public function definition(): array
     {
         $rejectables = [
-            JobTask::class,
-            HoursWorked::class
+            "JobTask",
+            "HoursWorked"
         ];
 
         $rejectableType = fake()->randomElement($rejectables);
-        $rejectableInstance = $rejectableType::query()->inRandomOrder()->first();
-
-        return [
-            'message' => fake()->realText(mt_rand(10, 255)),
-            'rejectable_id' => $rejectableInstance ? $rejectableInstance->id : null,
-            'rejectable_type' => $rejectableType,
-            'user_id' => fake()->numberBetween(1, User::count()),
-        ];
+        
+        if ($rejectableType == "JobTask")
+        {
+            return [
+                'message' => fake()->realText(mt_rand(10, 255)),
+                'rejectable_id' => fake()->numberBetween(1, JobTask::count()),
+                'rejectable_type' => JobTask::class,
+                'user_id' => fake()->numberBetween(1, User::count()),
+            ];
+        }
+        else if ($rejectableType == "HoursWorked")
+        {
+            return [
+                'message' => fake()->realText(mt_rand(10, 255)),
+                'rejectable_id' => fake()->numberBetween(1, HoursWorked::count()),
+                'rejectable_type' => HoursWorked::class,
+                'user_id' => fake()->numberBetween(1, User::count()),
+            ];
+        }
     }
 }

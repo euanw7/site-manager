@@ -11,7 +11,7 @@ class JobListing extends Model
     
     public function site()
     {
-        return $this->hasOne(Site::class);
+        return $this->belongsTo(Site::class);
     }
     
     public function user_tasks()

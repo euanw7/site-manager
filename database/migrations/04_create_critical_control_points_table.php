@@ -20,8 +20,6 @@ return new class extends Migration
             $table->double('product_tolerance', 8, 2)->unsigned();
             $table->integer('importance');
 
-            $table->foreignIdFor(JobPhase::class)->cascadeOnDelete()->cascadeOnUpdate();
-
             $table->timestamps();
         });
     }
