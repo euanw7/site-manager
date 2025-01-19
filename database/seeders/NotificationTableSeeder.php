@@ -12,6 +12,13 @@ class NotificationTableSeeder extends Seeder
      */
     public function run(): void
     {
+        $n = new Notification([
+            'content' => "This is the content of a notification.",
+            'date_received' => "2025-01-01",
+            'user_id' => 1,
+        ]);
+        $n->save();
+
         Notification::factory(5)->create();
     }
 }

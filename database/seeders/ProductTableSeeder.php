@@ -12,6 +12,12 @@ class ProductTableSeeder extends Seeder
      */
     public function run(): void
     {
+        $p = new Product([
+            'name' => "Product Name",
+            'description' => "This is the description of a product",
+        ]);
+        $p->save();
+
         Product::factory(10)->create();
     }
 }

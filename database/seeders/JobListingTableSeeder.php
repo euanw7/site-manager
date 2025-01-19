@@ -12,6 +12,17 @@ class JobListingTableSeeder extends Seeder
      */
     public function run(): void
     {
+        $j = new JobListing([
+            'job_number' => 1234,
+            'title' => "Job title",
+            'description' => "This is the description of a job.",
+            'start_date' => "2025-01-01",
+            'end_date' => "2025-02-01",
+            'is_active' => true,
+            'site_id' => 1,
+        ]);
+        $j->save();
+
         JobListing::factory(5)->create();
     }
 }

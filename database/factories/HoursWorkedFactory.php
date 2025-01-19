@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\HoursWorked;
 use App\Models\JobListing;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;

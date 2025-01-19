@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 50);
             $table->string('address', 255);
-            $table->string('EmployeeInstructions', 510);
+            $table->string('employee_instructions', 510);
 
             $table->foreignIdFor(JobListing::class)->cascadeOnDelete()->cascadeOnUpdate();
 

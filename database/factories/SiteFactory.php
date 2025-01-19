@@ -17,7 +17,7 @@ class SiteFactory extends Factory
         return [
             'name' => fake()->realText(mt_rand(10, 50)),
             'address' => fake()->address(),
-            'EmployeeInstructions' => fake()->realText(mt_rand(10, 510)),
+            'employee_instructions' => fake()->realText(mt_rand(10, 510)),
             'job_listing_id' => fake()->numberBetween(1, JobListing::count()),
         ];
     }
