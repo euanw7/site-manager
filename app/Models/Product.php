@@ -11,6 +11,6 @@ class Product extends Model
 
     public function critical_control_points()
     {
-        return $this->hasMany(CriticalControlPoint::class);
+        return $this->belongsToMany(CriticalControlPoint::class);
     }
 }

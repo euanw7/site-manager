@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('description', 255);
             $table->dateTime('due_date');
             
-            $table->foreignIdFor(User::class)->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(User::class, 'user_assigned_to_id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(User::class, 'user_assigned_by_id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignIdFor(JobListing::class)->cascadeOnDelete()->cascadeOnUpdate();
 
             $table->timestamps();

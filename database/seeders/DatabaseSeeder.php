@@ -25,18 +25,18 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            AuditTableSeeder::class,
+            ProductTableSeeder::class,
             CriticalControlPointTableSeeder::class,
-            HoursWorkedTableSeeder::class,
             JobListingTableSeeder::class,
             JobPhaseTableSeeder::class,
             JobTaskTableSeeder::class,
-            NotificationTableSeeder::class,
-            ProductTableSeeder::class,
             RejectionTableSeeder::class,
             ReportTableSeeder::class,
             SiteTableSeeder::class,
             UserTableSeeder::class,
+            NotificationTableSeeder::class,
+            HoursWorkedTableSeeder::class,
+            AuditTableSeeder::class,
             UserTaskTableSeeder::class,
         ]);
     }

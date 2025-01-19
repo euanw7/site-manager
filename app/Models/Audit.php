@@ -16,6 +16,6 @@ class Audit extends Model
 
     public function job_listings()
     {
-        return $this->hasMany(JobListing::class);
+        return $this->belongsToMany(JobListing::class);
     }
 }

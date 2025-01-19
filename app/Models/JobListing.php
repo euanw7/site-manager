@@ -36,11 +36,11 @@ class JobListing extends Model
 
     public function audits()
     {
-        return $this->hasMany(Audit::class);
+        return $this->belongsToMany(Audit::class);
     }
 
     public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class);
     }
 }

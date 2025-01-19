@@ -12,6 +12,6 @@ class RejectionTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Rejection::factory(2)->create();
+        Rejection::factory(5)->create();
     }
 }

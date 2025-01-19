@@ -78,11 +78,11 @@ class User extends Authenticatable
 
     public function sites()
     {
-        return $this->hasMany(Site::class);
+        return $this->belongsToMany(Site::class);
     }
 
     public function job_listings()
     {
-        return $this->hasMany(JobListing::class);
+        return $this->belongsToMany(JobListing::class);
     }
 }
