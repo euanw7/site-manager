@@ -13,8 +13,13 @@ class AuditTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Audit::factory(2)->create();
+        $a = new Audit([
+            'content' => "This is an audit. It can be used to evaluate jobs.",
+            'user_id' => 1.
+        ]);
+        $a->save();
 
+        Audit::factory(2)->create();
         $audits = Audit::factory(2)->create();
         foreach ($audits as $audit)
         {

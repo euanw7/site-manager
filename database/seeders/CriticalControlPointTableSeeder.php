@@ -14,6 +14,15 @@ class CriticalControlPointTableSeeder extends Seeder
      */
     public function run(): void
     {
+        $c = new CriticalControlPoint([
+            'method_statement' => "The method statement gives a detailed explanation on how a CCP should be completed.",
+            'product_coverage' => 1.50,
+            'product_usage' => 5.25,
+            'product_tolerance' => 3.42,
+            'importance' => 1,
+        ]);
+        $c->save();
+
         $ccps = CriticalControlPoint::factory(9)->create();
         foreach ($ccps as $ccp)
         {
