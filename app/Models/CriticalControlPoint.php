@@ -9,7 +9,7 @@ class CriticalControlPoint extends Model
 {
     use HasFactory;
 
-    public function job_tasks()
+    public function job_task()
     {
         return $this->hasOne(JobTask::class);
     }

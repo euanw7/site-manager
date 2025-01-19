@@ -17,7 +17,7 @@ class JobTask extends Model
 
     public function critical_control_point()
     {
-        return $this->hasOne(CriticalControlPoint::class);
+        return $this->belongsTo(CriticalControlPoint::class);
     }
 
     public function rejections(): MorphMany

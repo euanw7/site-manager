@@ -71,9 +71,14 @@ class User extends Authenticatable
         return $this->hasMany(HoursWorked::class);
     }
 
-    public function user_tasks()
+    public function assigned_user_tasks()
     {
-        return $this->hasMany(UserTask::class);
+        return $this->hasMany(UserTask::class, 'user_assigned_to_id');
+    }
+    
+    public function owned_user_tasks()
+    {
+        return $this->hasMany(UserTask::class, 'user_assigned_by_id');
     }
 
     public function sites()

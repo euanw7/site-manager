@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\UserTask;
 use App\Models\Report;
 use App\Models\JobPhase;
+use App\Models\Site;
 
 return new class extends Migration
 {
@@ -23,6 +24,9 @@ return new class extends Migration
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->boolean('is_active');
+
+            $table->foreignIdFor(Site::class)->cascadeOnDelete()->cascadeOnUpdate();
+
             $table->timestamps();
         });
     }

@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\HoursWorked;
 use App\Models\JobPhase;
 use App\Models\Report;
+use App\Models\Site;
 use App\Models\UserTask;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -24,6 +25,7 @@ class JobListingFactory extends Factory
             'start_date' => fake()->date('Y-m-d'),
             'end_date'=> fake()->date('Y-m-d'),
             'is_active' => true,
+            'site_id' => fake()->numberBetween(1, Site::count()),
         ];
     }
 }
