@@ -30,12 +30,12 @@ class DatabaseSeeder extends Seeder
             JobListingTableSeeder::class,
             JobPhaseTableSeeder::class,
             JobTaskTableSeeder::class,
+            HoursWorkedTableSeeder::class,
             RejectionTableSeeder::class,
             ReportTableSeeder::class,
             SiteTableSeeder::class,
             UserTableSeeder::class,
             NotificationTableSeeder::class,
-            HoursWorkedTableSeeder::class,
             AuditTableSeeder::class,
             UserTaskTableSeeder::class,
         ]);

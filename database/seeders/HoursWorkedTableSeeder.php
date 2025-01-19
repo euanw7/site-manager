@@ -13,6 +13,6 @@ class HoursWorkedTableSeeder extends Seeder
      */
     public function run(): void
     {
-        HoursWorked::factory(User::count())->create();
+        HoursWorked::factory(10)->create();
     }
 }
