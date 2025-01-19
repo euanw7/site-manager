@@ -11,15 +11,10 @@ class JobPhase extends Model
 
     public function job_listing()
     {
-        return $this->hasOne(JobListing::class);
+        return $this->belongsTo(JobListing::class);
     }
 
-    public function critical_control_point()
-    {
-        return $this->hasOne(CriticalControlPoint::class);
-    }
-
-    public function job_task()
+    public function job_tasks()
     {
         return $this->hasMany(JobTask::class);
     }

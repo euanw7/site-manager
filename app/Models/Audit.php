@@ -11,11 +11,11 @@ class Audit extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function job_listings()
     {
-        return $this->hasMany(JobListing::class);
+        return $this->belongsToMany(JobListing::class);
     }
 }

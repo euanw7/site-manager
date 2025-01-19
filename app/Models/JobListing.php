@@ -11,36 +11,36 @@ class JobListing extends Model
     
     public function site()
     {
-        return $this->hasOne(Site::class);
+        return $this->belongsTo(Site::class);
     }
     
-    public function user_task()
+    public function user_tasks()
     {
         return $this->hasMany(UserTask::class);
     }
 
-    public function report()
+    public function reports()
     {
         return $this->hasMany(Report::class);
     }
 
-    public function job_phase()
+    public function job_phases()
     {
         return $this->hasMany(JobPhase::class);
     }
 
-    public function hours_worked()
+    public function hours_workeds()
     {
         return $this->hasMany(HoursWorked::class);
     }
 
     public function audits()
     {
-        return $this->hasMany(Audit::class);
+        return $this->belongsToMany(Audit::class);
     }
 
     public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class);
     }
 }

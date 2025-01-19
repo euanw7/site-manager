@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\UserTask;
 use App\Models\Report;
 use App\Models\JobPhase;
+use App\Models\Site;
 
 return new class extends Migration
 {
@@ -24,10 +25,7 @@ return new class extends Migration
             $table->dateTime('end_date');
             $table->boolean('is_active');
 
-            $table->foreignIdFor(UserTask::class)->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignIdFor(Report::class)->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignIdFor(JobPhase::class)->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignIdFor(HoursWorked::class)->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(Site::class)->cascadeOnDelete()->cascadeOnUpdate();
 
             $table->timestamps();
         });
