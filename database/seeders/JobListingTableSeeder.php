@@ -23,6 +23,17 @@ class JobListingTableSeeder extends Seeder
         ]);
         $j->save();
 
+        $j = new JobListing([
+            'job_number' => 5678,
+            'title' => "Job title 2",
+            'description' => "This is the description of another job.",
+            'start_date' => "2025-01-02",
+            'end_date' => "2025-02-02",
+            'is_active' => false,
+            'site_id' => 1,
+        ]);
+        $j->save();
+
         JobListing::factory(5)->create();
     }
 }
