@@ -37,7 +37,8 @@ class JobListingController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $job_listing = JobListing::findOrFail($id);
+        return view('joblistings.show', ['job_listing' => $job_listing]);
     }
 
     /**

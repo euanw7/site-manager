@@ -9,6 +9,11 @@ class JobPhase extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date' => 'date'
+    ];
+
     public function job_listing()
     {
         return $this->belongsTo(JobListing::class);

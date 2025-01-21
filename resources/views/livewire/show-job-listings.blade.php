@@ -15,9 +15,9 @@
     @endif
     
     @foreach ($jobListings as $jobListing)
-        <div class="inline-block">
+        <div class="inline-block align-top">
             <a href="/joblistings/{{ $jobListing->id }}">
-                <div class="text-black h-40 w-52 p-4 rounded-lg mr-5 mb-5 bg-gray-200">
+                <div class="text-black h-32 w-52 p-4 rounded-lg mr-5 mb-5 bg-gray-200">
                     <b>{{ $jobListing->job_number }}</b>
                     <div>{{ $jobListing->title }}</div>
                 </div>
