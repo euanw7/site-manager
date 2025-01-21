@@ -10,6 +10,11 @@ class JobTask extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date' => 'date'
+    ];
+
     public function job_phase()
     {
         return $this->belongsTo(JobPhase::class);
