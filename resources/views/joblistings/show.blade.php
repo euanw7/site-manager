@@ -5,7 +5,7 @@
             <a href="{{ route('joblistings.edit', ['id' => $job_listing->id]) }}" class="bg-green-700 text-white rounded-lg p-2 mr-4">
                 Edit Job
             </a>
-            <form method="POST" action="{{ route('joblistings.destroy', ['id' => $job_listing->id]) }}">
+            <form method="POST" action="{{ route('joblistings.destroy', ['id' => $job_listing->id]) }}" data-turbolinks="true">
                 @csrf
                 @method('DELETE')
                 <button type="submit" 

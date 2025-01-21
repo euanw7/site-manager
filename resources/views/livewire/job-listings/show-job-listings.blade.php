@@ -17,7 +17,7 @@
     
     @foreach ($jobListings as $jobListing)
         <div class="inline-block align-top">
-            <a href="/joblistings/{{ $jobListing->id }}">
+            <a href="/joblistings/{{ $jobListing->id }}" data-turbolinks="true">
                 <div class="text-black h-32 w-52 p-4 rounded-lg mr-5 mb-5 bg-gray-200">
                     <b>{{ $jobListing->job_number }}</b>
                     <div>{{ $jobListing->title }}</div>
