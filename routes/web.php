@@ -20,6 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/joblistings', [JobListingController::class, 'index'])->name('joblistings.index');
+    Route::get('/joblistings/create', [JobListingController::class, 'create'])->name('joblistings.create');
+    Route::post('/joblistings', [JobListingController::class, 'store'])->name('joblistings.store');
     Route::get('/joblistings/{id}', [JobListingController::class, 'show'])->name('joblistings.show');
 
     Route::get('/jobphases/{id}', [JobPhaseController::class, 'show'])->name('jobphases.show');

@@ -1,19 +1,8 @@
-<x-app-layout>
-    <x-slot name="header">
-        <div class="flow-root">
-            <h2 class="float-left font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('Jobs') }}
-            </h2>
-        </div>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <livewire:show-job-listings />
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+<x-job.job-layout title="{{ __('Jobs') }}">
+    <x-slot:header>
+        <a href="{{ route('joblistings.create') }}" class="bg-green-700 text-white rounded-lg p-2">
+            New Job
+        </a>
+    </x-slot:header>
+    <livewire:show-job-listings />
+</x-job.job-layout>

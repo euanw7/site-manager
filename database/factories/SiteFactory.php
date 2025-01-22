@@ -18,7 +18,6 @@ class SiteFactory extends Factory
             'name' => fake()->realText(mt_rand(10, 50)),
             'address' => fake()->address(),
             'employee_instructions' => fake()->realText(mt_rand(10, 510)),
-            'job_listing_id' => fake()->numberBetween(1, JobListing::count()),
         ];
     }
 }

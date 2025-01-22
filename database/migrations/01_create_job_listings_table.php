@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('description', 255);
             $table->dateTime('start_date');
             $table->dateTime('end_date');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(false);
 
             $table->foreignIdFor(Site::class)->cascadeOnDelete()->cascadeOnUpdate();
 

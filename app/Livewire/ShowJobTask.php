@@ -10,6 +10,6 @@ class ShowJobTask extends Component
     
     public function render()
     {
-        return view('livewire.show-job-task');
+        return view('livewire.job-tasks.show-job-task');
     }
 }
