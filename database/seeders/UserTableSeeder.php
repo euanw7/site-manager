@@ -27,17 +27,13 @@ class UserTableSeeder extends Seeder
         {
             // Fetch all product IDs
             $siteIds = Site::pluck('id')->toArray();
-            $jobListingIds = JobListing::pluck('id')->toArray();
             
             // Shuffle and select a random subset of product IDs
             shuffle($siteIds);
-            shuffle($jobListingIds);
             $randomSiteIds = array_slice($siteIds, 0, mt_rand(1, count($siteIds)));
-            $randomJobListingIds = array_slice($jobListingIds, 0, mt_rand(1, count($jobListingIds)));
             
-            // Attach the random products to the current CCP
+            // Attach the random products to the current user
             $user->sites()->attach($randomSiteIds);
-            $user->job_listings()->attach($randomJobListingIds);
         }
     }
 }

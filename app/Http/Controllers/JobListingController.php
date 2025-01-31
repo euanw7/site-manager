@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\JobListing;
+use App\Models\Site;
+use App\Models\User;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 
 class JobListingController extends Controller
@@ -21,7 +24,16 @@ class JobListingController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::orderBy('name', 'asc')->get();
+        $sites = Site::orderBy('name', 'asc')->get();
+        $roles = UserRole::orderBy('name', 'asc')->get();
+
+        return view('joblistings.create', 
+        [
+            'users' => $users,
+            'sites' => $sites,
+            'roles' => $roles
+        ]);
     }
 
     /**

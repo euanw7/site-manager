@@ -11,6 +11,6 @@ class ShowJobDetails extends Component
 
     public function render()
     {
-        return view('livewire.show-job-details');
+        return view('livewire.job-listings.show-job-details');
     }
 }

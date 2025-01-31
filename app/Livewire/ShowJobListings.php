@@ -12,7 +12,7 @@ class ShowJobListings extends Component
 
     public function render()
     {
-        return view('livewire.show-job-listings', [
+        return view('livewire.job-listings.show-job-listings', [
             'jobListings' => JobListing::latest()
                 // Search bar matches title or job number
                 ->where(function ($query) {

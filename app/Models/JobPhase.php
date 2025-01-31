@@ -14,6 +14,14 @@ class JobPhase extends Model
         'end_date' => 'date'
     ];
 
+    protected $fillable = [
+        'title',
+        'description',
+        'start_date',
+        'end_date',
+        'job_listing_id'
+    ];
+
     public function job_listing()
     {
         return $this->belongsTo(JobListing::class);
@@ -22,5 +30,17 @@ class JobPhase extends Model
     public function job_tasks()
     {
         return $this->hasMany(JobTask::class);
+    }
+
+    public function is_complete()
+    {
+        foreach ($this->job_tasks as $task)
+        {
+            if (!$task->approved)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

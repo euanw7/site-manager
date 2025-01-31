@@ -80,14 +80,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserTask::class, 'user_assigned_by_id');
     }
+    
+    public function user_assigned_roles()
+    {
+        return $this->hasMany(UserAssignedRole::class);
+    }
 
     public function sites()
     {
         return $this->belongsToMany(Site::class);
-    }
-
-    public function job_listings()
-    {
-        return $this->belongsToMany(JobListing::class);
     }
 }

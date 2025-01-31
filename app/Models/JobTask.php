@@ -15,6 +15,15 @@ class JobTask extends Model
         'end_date' => 'date'
     ];
 
+    protected $fillable = [
+        'title',
+        'description',
+        'start_date',
+        'end_date',
+        'quality_critical',
+        'job_phase_id'
+    ];
+
     public function job_phase()
     {
         return $this->belongsTo(JobPhase::class);

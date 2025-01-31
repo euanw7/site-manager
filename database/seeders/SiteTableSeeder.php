@@ -16,7 +16,6 @@ class SiteTableSeeder extends Seeder
             'name' => "Swansea University",
             'address' => "1 Big Road, Big City, PXK7 1CM",
             'employee_instructions' => "Park behind the green bin",
-            'job_listing_id' => 1,
         ]);
         $s->save();
 

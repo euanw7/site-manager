@@ -9,6 +9,15 @@ class JobListing extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'job_number',
+        'title',
+        'description',
+        'start_date',
+        'end_date',
+        'site_id'
+    ];
+
     protected $casts = [
         'start_date' => 'date',
         'end_date' => 'date'
@@ -39,13 +48,13 @@ class JobListing extends Model
         return $this->hasMany(HoursWorked::class);
     }
 
+    public function user_assigned_roles()
+    {
+        return $this->hasMany(UserAssignedRole::class);
+    }
+
     public function audits()
     {
         return $this->belongsToMany(Audit::class);
-    }
-
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
     }
 }
