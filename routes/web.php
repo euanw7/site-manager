@@ -21,8 +21,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/joblistings', [JobListingController::class, 'index'])->name('joblistings.index');
     Route::get('/joblistings/create', [JobListingController::class, 'create'])->name('joblistings.create');
-    Route::post('/joblistings', [JobListingController::class, 'store'])->name('joblistings.store');
     Route::get('/joblistings/{id}', [JobListingController::class, 'show'])->name('joblistings.show');
+    Route::delete('/joblistings/{id}', [JobListingController::class, 'destroy'])->name('joblistings.destroy');
+    Route::get('/joblistings/edit/{id}', [JobListingController::class, 'edit'])->name('joblistings.edit');
 
     Route::get('/jobphases/{id}', [JobPhaseController::class, 'show'])->name('jobphases.show');
 

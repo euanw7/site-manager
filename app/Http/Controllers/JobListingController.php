@@ -24,24 +24,12 @@ class JobListingController extends Controller
      */
     public function create()
     {
-        $users = User::orderBy('name', 'asc')->get();
-        $sites = Site::orderBy('name', 'asc')->get();
-        $roles = UserRole::orderBy('name', 'asc')->get();
-
         return view('joblistings.create', 
         [
-            'users' => $users,
-            'sites' => $sites,
-            'roles' => $roles
+            'users' => User::orderBy('name', 'asc')->get(),
+            'sites' => Site::orderBy('name', 'asc')->get(),
+            'roles' => UserRole::orderBy('name', 'asc')->get()
         ]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -49,8 +37,9 @@ class JobListingController extends Controller
      */
     public function show(string $id)
     {
-        $job_listing = JobListing::findOrFail($id);
-        return view('joblistings.show', ['job_listing' => $job_listing]);
+        return view('joblistings.show', [
+            'job_listing' => JobListing::findOrFail($id),
+        ]);
     }
 
     /**
@@ -58,15 +47,12 @@ class JobListingController extends Controller
      */
     public function edit(string $id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+        return view('joblistings.edit', [
+            'job_listing' => JobListing::findOrFail($id),
+            'users' => User::orderBy('name', 'asc')->get(),
+            'sites' => Site::orderBy('name', 'asc')->get(),
+            'roles' => UserRole::orderBy('name', 'asc')->get()
+        ]);
     }
 
     /**
@@ -74,6 +60,8 @@ class JobListingController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $job_listing = JobListing::findOrFail($id);
+        $job_listing->delete();
+        return redirect()->route('joblistings.index');
     }
 }

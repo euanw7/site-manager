@@ -11,7 +11,7 @@
     </div>
 
     <!-- Description -->
-    <div class="w-full border-0 mb-1 min-h-24 resize-none bg-white flex flex-wrap p-2">
+    <div class="w-full border-0 mb-1 bg-white flex flex-wrap p-2">
         {{ $value->description }}
     </div>
 

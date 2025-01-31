@@ -9,6 +9,8 @@ class Site extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function job_listings()
     {
         return $this->hasMany(JobListing::class);
