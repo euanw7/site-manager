@@ -14,8 +14,8 @@ class CriticalControlPoint extends Model
         return $this->hasOne(JobTask::class);
     }
 
-    public function products()
+    public function product_in_uses()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->hasMany(ProductInUse::class);
     }
 }

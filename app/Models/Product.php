@@ -9,8 +9,8 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function critical_control_points()
+    public function product_in_uses()
     {
-        return $this->belongsToMany(CriticalControlPoint::class);
+        return $this->hasMany(ProductInUse::class);
     }
 }
