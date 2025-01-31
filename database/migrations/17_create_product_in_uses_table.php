@@ -13,10 +13,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('critical_control_point_product', function (Blueprint $table) {
-            $table->primary(['critical_control_point_id', 'product_id']);
-            $table->foreignIdFor(CriticalControlPoint::class)->cascadeOnDelete()->cascadeOnUpdate();
+        Schema::create('product_in_uses', function (Blueprint $table) {
+            $table->id();
+            $table->double('product_coverage', 8, 2)->unsigned(); // unsigned for only positive values
+            $table->double('product_usage', 8, 2)->unsigned(); // 8 digits total, 2 after the decimal point
+            $table->double('product_tolerance', 8, 2)->unsigned();
+
             $table->foreignIdFor(Product::class)->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(CriticalControlPoint::class)->cascadeOnDelete()->cascadeOnUpdate();
+
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('critical_control_point_product');
+        Schema::dropIfExists('product_in_uses');
     }
 };

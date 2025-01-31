@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             AuditTableSeeder::class,
             UserTaskTableSeeder::class,
             UserRoleTableSeeder::class,
-            UserAssignedRoleTableSeeder::class
+            UserAssignedRoleTableSeeder::class,
+            ProductInUseTableSeeder::class
         ]);
     }
 }
