@@ -1,7 +1,7 @@
 <div>
     <div>{{$job_listing->description}}</div>
     <div>Start Date: {{ $job_listing->start_date->format('d-m-Y') }}</div>
-    <div>Estimated End Date: {{ $job_listing->end_date->format('d-m-Y') }}</div>
+    <div>End Date: {{ $job_listing->end_date->format('d-m-Y') }}</div>
 
     <!-- Active Status -->
     @if ($job_listing->is_active)

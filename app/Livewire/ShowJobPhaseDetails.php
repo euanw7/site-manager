@@ -54,6 +54,7 @@ class ShowJobPhaseDetails extends Component
         ]);
         $j->save();
 
+        $this->reset(['title', 'description', 'start_date', 'end_date', 'quality_critical']);
         $this->toggle_component_visibility();
     }
 }
