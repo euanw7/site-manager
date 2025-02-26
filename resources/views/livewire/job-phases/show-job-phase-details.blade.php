@@ -42,7 +42,8 @@
         </div>
         @foreach ($value->job_tasks as $task)
             <a href="{{ route('jobtasks.show', $task->id) }}"
-                class="flex flex-row mb-2 flex items-center hover:bg-gray-300 rounded-lg">
+                class="flex flex-row mb-2 flex items-center hover:bg-gray-300 rounded-lg"
+                data-turbolinks="true">
                 @if ($task->approved)
                     <div class="flex items-center rounded-lg size-4 mr-2 bg-green-700"></div>
                 @else

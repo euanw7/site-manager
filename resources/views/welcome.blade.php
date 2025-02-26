@@ -4,7 +4,7 @@
             <div class="mr-10 float-left">
                 Welcome to Site Manager 360
             </div>
-            <a href="{{ route('dashboard') }}" class="ml-5 float-right">
+            <a href="{{ route('dashboard') }}" class="ml-5 float-right" data-turbolinks="true">
                 {{ __('Log in')}}
             </a>
         </div>
