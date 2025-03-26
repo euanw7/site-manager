@@ -72,11 +72,9 @@
                         <input type="date" class="w-1/2 p-2 bg-gray-800 text-white border border-gray-600" wire:model="start_date" />
                         @error('start_date')
                             <div class="text-red-500">{{ $message }}</div>
-                            <div class="text-red-500">{{ $message }}</div>
                         @enderror
                         <input type="date" class="w-1/2 p-2 bg-gray-800 text-white border border-gray-600" wire:model="end_date" />
                         @error('end_date')
-                            <div class="text-red-500">{{ $message }}</div>
                             <div class="text-red-500">{{ $message }}</div>
                         @enderror
                     </div>
