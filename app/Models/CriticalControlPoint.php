@@ -9,6 +9,8 @@ class CriticalControlPoint extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['method_statement'];
+
     public function job_task()
     {
         return $this->hasOne(JobTask::class);

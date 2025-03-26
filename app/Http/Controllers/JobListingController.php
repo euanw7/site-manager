@@ -6,7 +6,6 @@ use App\Models\JobListing;
 use App\Models\Site;
 use App\Models\User;
 use App\Models\UserRole;
-use Illuminate\Http\Request;
 
 class JobListingController extends Controller
 {

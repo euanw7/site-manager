@@ -1,6 +1,6 @@
-<div class="text-white bg-gray-800 border-4 border-gray-700 rounded-2xl p-4 w-96 h-max mb-6">
+<div class="text-white bg-gray-800 border-4 border-gray-700 rounded-2xl p-4 w-full h-max mb-6">
     <!-- Number & Title -->
-    <div class="flex flex-row mb-4">
+    <div class="flex flex-row mb-1">
         <div class="flex items-center justify-center text-lg w-1/12 border-0 rounded-tl-lg bg-gray-700 mr-1 p-2">
             {{ $key + 1 }}
         </div>
@@ -11,13 +11,13 @@
     </div>
 
     <!-- Description -->
-    <div class="w-full border-0 mb-4 bg-gray-700 p-2 rounded-lg">
+    <div class="w-full border-0 mb-1 min-h-24 resize-none flex flex-wrap p-2 bg-gray-700">
         {{ $value->description }}
     </div>
 
     <!-- Start & End Date -->
-    <div class="flex flex-row mb-4">
-        <div class="w-1/2 border-0 mr-1 flex flex-row bg-gray-700 p-2 rounded-lg">
+    <div class="flex flex-row mb-1">
+        <div class="w-1/2 border-0 mr-1 flex flex-row bg-gray-700 p-2">
             <div class="flex justify-center items-center rounded-bl-lg p-1">
                 Start:
             </div>
@@ -25,7 +25,7 @@
                 {{ $value->start_date->format('d-m-Y') }}
             </div>
         </div>
-        <div class="w-1/2 border-0 flex flex-row bg-gray-700 p-2 rounded-lg">
+        <div class="w-1/2 border-0 flex flex-row bg-gray-700 p-2">
             <div class="flex justify-center items-center p-1">
                 End:
             </div>
@@ -36,7 +36,7 @@
     </div>
 
     <!-- Tasks -->
-    <div class="bg-gray-700 p-4 rounded-lg">
+    <div class="bg-gray-700 p-4 rounded-b-lg">
         <div class="mb-4 font-semibold">
             Tasks
         </div>
@@ -72,9 +72,11 @@
                         <input type="date" class="w-1/2 p-2 bg-gray-800 text-white border border-gray-600" wire:model="start_date" />
                         @error('start_date')
                             <div class="text-red-500">{{ $message }}</div>
+                            <div class="text-red-500">{{ $message }}</div>
                         @enderror
                         <input type="date" class="w-1/2 p-2 bg-gray-800 text-white border border-gray-600" wire:model="end_date" />
                         @error('end_date')
+                            <div class="text-red-500">{{ $message }}</div>
                             <div class="text-red-500">{{ $message }}</div>
                         @enderror
                     </div>

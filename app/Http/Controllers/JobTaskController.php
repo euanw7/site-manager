@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JobTask;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class JobTaskController extends Controller
@@ -37,7 +38,12 @@ class JobTaskController extends Controller
     public function show(string $id)
     {
         $job_task = JobTask::findOrFail($id);
-        return view('jobtasks.show', ['job_task' => $job_task]);
+        $products = Product::all();
+        return view('jobtasks.show', 
+        [
+            'job_task' => $job_task,
+            'products' => $products
+        ]);
     }
 
     /**

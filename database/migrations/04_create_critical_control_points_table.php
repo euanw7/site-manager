@@ -14,8 +14,8 @@ return new class extends Migration
     {
         Schema::create('critical_control_points', function (Blueprint $table) {
             $table->id();
-            $table->string('method_statement', 1020);
-            $table->integer('importance');
+            $table->string('method_statement', 1020)->default("No method statement.");
+            $table->integer('importance')->default(1);
             $table->timestamps();
         });
     }

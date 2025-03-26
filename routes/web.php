@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\JobListingController;
 use App\Http\Controllers\JobPhaseController;
 use App\Http\Controllers\JobTaskController;
@@ -24,10 +25,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/joblistings/{id}', [JobListingController::class, 'show'])->name('joblistings.show');
     Route::delete('/joblistings/{id}', [JobListingController::class, 'destroy'])->name('joblistings.destroy');
     Route::get('/joblistings/edit/{id}', [JobListingController::class, 'edit'])->name('joblistings.edit');
-
+    
     Route::get('/jobphases/{id}', [JobPhaseController::class, 'show'])->name('jobphases.show');
-
+    
     Route::get('/jobtasks/{id}', [JobTaskController::class, 'show'])->name('jobtasks.show');
+
+    Route::get('/admin', [AdminController::class, 'adminMenu'])->name('admin.menu');
 });
 
 require __DIR__.'/auth.php';

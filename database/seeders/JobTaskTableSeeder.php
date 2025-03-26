@@ -17,7 +17,7 @@ class JobTaskTableSeeder extends Seeder
             'description' => "This is the description of a job.",
             'start_date' => "2025-01-01",
             'end_date' => "2025-01-10",
-            'quality_critical' => true,
+            'quality_critical' => false,
             'job_phase_id' => 1,
             'critical_control_point_id' => null,
         ]);

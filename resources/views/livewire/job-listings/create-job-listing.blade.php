@@ -1,34 +1,48 @@
 <div class="container mx-auto p-4">
+    <style>
+        .error-message {
+            color: #f56565; /* Tailwind CSS red-500 */
+            font-size: 0.875rem; /* Tailwind CSS text-sm */
+            margin-top: 0.25rem; /* Tailwind CSS mt-1 */
+        }
+    </style>
+
     <!-- Job Details -->
     <div class="text-2xl mb-3 text-white">Job Details</div>
     <div class="bg-gray-800 text-white border-4 border-gray-700 rounded-2xl p-4 mb-6">
         <div class="w-full">
             <div class="flex flex-row mb-4">
                 <!-- Job Number -->
-                <input placeholder="Job Number..."
-                    wire:model="job_number"
-                    class="w-1/4 rounded-tl-lg p-2 bg-gray-700 text-white border border-gray-600 mr-1">
-                @error('job_number')
-                    <div class="text-red-500">{{ $message }}</div>
-                @enderror
+                <div class="w-1/4 mr-1">
+                    <input placeholder="Job Number..."
+                        wire:model="job_number"
+                        class="w-full rounded-tl-lg p-2 bg-gray-700 text-white border border-gray-600">
+                    @error('job_number')
+                        <div class="error-message">{{ $message }}</div>
+                    @enderror
+                </div>
                 <!-- Title -->
-                <input placeholder="Job Title..."
-                    wire:model="title"
-                    class="w-3/4 rounded-tr-lg p-2 bg-gray-700 text-white border border-gray-600">
-                @error('title')
-                    <div class="text-red-500">{{ $message }}</div>
-                @enderror
+                <div class="w-3/4">
+                    <input placeholder="Job Title..."
+                        wire:model="title"
+                        class="w-full rounded-tr-lg p-2 bg-gray-700 text-white border border-gray-600">
+                    @error('title')
+                        <div class="error-message">{{ $message }}</div>
+                    @enderror
+                </div>
             </div>
 
             <!-- Description -->
-            <textarea placeholder="Description..."
-                wire:model="description"
-                rows="4"
-                maxlength="255"
-                class="w-full resize-none mb-4 p-2 bg-gray-700 text-white border border-gray-600 rounded-lg"></textarea>
-            @error('description')
-                <div class="text-red-500">{{ $message }}</div>
-            @enderror
+            <div class="mb-4">
+                <textarea placeholder="Description..."
+                    wire:model="description"
+                    rows="4"
+                    maxlength="255"
+                    class="w-full resize-none p-2 bg-gray-700 text-white border border-gray-600 rounded-lg"></textarea>
+                @error('description')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
+            </div>
 
             <div class="flex flex-row mb-4">
                 <div class="w-1/2 mr-1">
@@ -41,10 +55,10 @@
                             wire:model="start_date"
                             class="border-0 bg-gray-700 text-white"
                             type="date">
+                        </div>
                         @error('start_date')
-                            <div class="text-red-500">{{ $message }}</div>
+                            <div class="error-message">{{ $message }}</div>
                         @enderror
-                    </div>
                 </div>
 
                 <div class="w-1/2">
@@ -57,9 +71,11 @@
                             wire:model="end_date"
                             class="border-0 bg-gray-700 text-white"
                             type="date">
+                        </div>
                         @error('end_date')
-                            <div class="text-red-500">{{ $message }}</div>
+                            <div class="error-message">{{ $message }}</div>
                         @enderror
+                    </div>
                     </div>
                 </div>
             </div>
@@ -67,6 +83,7 @@
     </div>
 
     <!-- Job Phases -->
+    <div class="text-2xl mt-20 mb-3 text-white">Phases</div>
     <div class="text-2xl mt-20 mb-3 text-white">Phases</div>
     <div class="flex flex-row flex-wrap gap-10">
         <div class="flex flex-wrap gap-5">
@@ -89,6 +106,7 @@
 
     <!-- Key Employees -->
     <div class="text-2xl mt-20 mb-3 text-white">Key Employees</div>
+    <div class="text-2xl mt-20 mb-3 text-white">Key Employees</div>
     <div class="flex flex-col gap-5">
         @foreach ($key_employee_inputs as $key=>$value)
             <x-job.key-employee-input :key="$key" :value="$value" :users="$users" :roles="$roles" />
@@ -108,7 +126,10 @@
 
     <!-- Site Details -->
     <div class="text-2xl mt-20 mb-3 text-white">Site Details</div>
+    <div class="text-2xl mt-20 mb-3 text-white">Site Details</div>
     <div class="grid grid-cols-[200px_200px] gap-1 flex items-center">
+        <div class="text-white">Site</div>
+        <select wire:model="site_id" class="text-black bg-gray-700 text-white border border-gray-600 rounded-lg p-2">
         <div class="text-white">Site</div>
         <select wire:model="site_id" class="text-black bg-gray-700 text-white border border-gray-600 rounded-lg p-2">
             @foreach ($sites as $site)
@@ -120,7 +141,7 @@
             @endforeach
         </select>
         @error('site_id')
-            <div class="text-red-500">{{ $message }}</div>
+            <div class="error-message">{{ $message }}</div>
         @enderror
     </div>
 

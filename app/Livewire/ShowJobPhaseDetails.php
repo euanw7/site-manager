@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\CriticalControlPoint;
 use Livewire\Component;
 use DateTime;
 use Livewire\Attributes\Rule;
@@ -52,6 +53,13 @@ class ShowJobPhaseDetails extends Component
             'quality_critical' => $this->quality_critical,
             'job_phase_id' => $this->value->id
         ]);
+        
+        if ($j->quality_critical)
+        {
+            $c = new CriticalControlPoint();
+            $c->save();
+            $j->critical_control_point()->associate($c);
+        }
         $j->save();
 
         $this->reset(['title', 'description', 'start_date', 'end_date', 'quality_critical']);
