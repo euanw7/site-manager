@@ -44,6 +44,9 @@
                 @enderror
             </div>
 
+
+
+            
             <div class="flex flex-row mb-4">
                 <div class="w-1/2 mr-1">
                     <!-- Start Date -->
@@ -55,10 +58,10 @@
                             wire:model="start_date"
                             class="border-0 bg-gray-700 text-white"
                             type="date">
-                        </div>
-                        @error('start_date')
-                            <div class="error-message">{{ $message }}</div>
-                        @enderror
+                    </div>
+                    @error('start_date')
+                        <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="w-1/2">
@@ -71,19 +74,19 @@
                             wire:model="end_date"
                             class="border-0 bg-gray-700 text-white"
                             type="date">
-                        </div>
-                        @error('end_date')
-                            <div class="error-message">{{ $message }}</div>
-                        @enderror
                     </div>
-                    </div>
+                    @error('end_date')
+                        <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
+
+
+            
         </div>
     </div>
 
     <!-- Job Phases -->
-    <div class="text-2xl mt-20 mb-3 text-white">Phases</div>
     <div class="text-2xl mt-20 mb-3 text-white">Phases</div>
     <div class="flex flex-row flex-wrap gap-10">
         <div class="flex flex-wrap gap-5">
@@ -106,7 +109,6 @@
 
     <!-- Key Employees -->
     <div class="text-2xl mt-20 mb-3 text-white">Key Employees</div>
-    <div class="text-2xl mt-20 mb-3 text-white">Key Employees</div>
     <div class="flex flex-col gap-5">
         @foreach ($key_employee_inputs as $key=>$value)
             <x-job.key-employee-input :key="$key" :value="$value" :users="$users" :roles="$roles" />
@@ -126,10 +128,7 @@
 
     <!-- Site Details -->
     <div class="text-2xl mt-20 mb-3 text-white">Site Details</div>
-    <div class="text-2xl mt-20 mb-3 text-white">Site Details</div>
     <div class="grid grid-cols-[200px_200px] gap-1 flex items-center">
-        <div class="text-white">Site</div>
-        <select wire:model="site_id" class="text-black bg-gray-700 text-white border border-gray-600 rounded-lg p-2">
         <div class="text-white">Site</div>
         <select wire:model="site_id" class="text-black bg-gray-700 text-white border border-gray-600 rounded-lg p-2">
             @foreach ($sites as $site)
