@@ -54,53 +54,55 @@
                 </div>
             </a>
         @endforeach
-        <div>
-            @if ($create_component_is_visible)
-                <hr class="h-px my-4 border-0 bg-gray-600">
+        @if(Gate::allows('is.admin'))
+            <div>
+                @if ($create_component_is_visible)
+                    <hr class="h-px my-4 border-0 bg-gray-600">
 
-                <!-- Create Job Task -->
-                <div class="mb-4">
-                    <input type="text" placeholder="Title..." class="w-full rounded-t-lg p-2 bg-gray-800 text-white border border-gray-600" wire:model="title" />
-                    @error('title')
-                        <div class="text-red-500">{{ $message }}</div>
-                    @enderror
-                    <input type="text" placeholder="Description..." class="w-full p-2 bg-gray-800 text-white border border-gray-600" wire:model="description" />
-                    @error('description')
-                        <div class="text-red-500">{{ $message }}</div>
-                    @enderror
-                    <div class="flex flex-row">
-                        <input type="date" class="w-1/2 p-2 bg-gray-800 text-white border border-gray-600" wire:model="start_date" />
-                        @error('start_date')
+                    <!-- Create Job Task -->
+                    <div class="mb-4">
+                        <input type="text" placeholder="Title..." class="w-full rounded-t-lg p-2 bg-gray-800 text-white border border-gray-600" wire:model="title" />
+                        @error('title')
                             <div class="text-red-500">{{ $message }}</div>
                         @enderror
-                        <input type="date" class="w-1/2 p-2 bg-gray-800 text-white border border-gray-600" wire:model="end_date" />
-                        @error('end_date')
+                        <input type="text" placeholder="Description..." class="w-full p-2 bg-gray-800 text-white border border-gray-600" wire:model="description" />
+                        @error('description')
                             <div class="text-red-500">{{ $message }}</div>
                         @enderror
+                        <div class="flex flex-row">
+                            <input type="date" class="w-1/2 p-2 bg-gray-800 text-white border border-gray-600" wire:model="start_date" />
+                            @error('start_date')
+                                <div class="text-red-500">{{ $message }}</div>
+                            @enderror
+                            <input type="date" class="w-1/2 p-2 bg-gray-800 text-white border border-gray-600" wire:model="end_date" />
+                            @error('end_date')
+                                <div class="text-red-500">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="rounded-b-lg p-2 border border-gray-600 flex flex-row items-center bg-gray-800">
+                            <input type="checkbox" class="mr-2" wire:model="quality_critical" />
+                            <div>Quality Critical</div>
+                        </div>
                     </div>
-                    <div class="rounded-b-lg p-2 border border-gray-600 flex flex-row items-center bg-gray-800">
-                        <input type="checkbox" class="mr-2" wire:model="quality_critical" />
-                        <div>Quality Critical</div>
-                    </div>
-                </div>
 
-                <div class="text-white flex flex-row">
-                    <button wire:click="create_job_task"
-                        class="bg-green-700 rounded-lg mr-2 w-1/2 p-2">
-                        Create
+                    <div class="text-white flex flex-row">
+                        <button wire:click="create_job_task"
+                            class="bg-green-700 rounded-lg mr-2 w-1/2 p-2">
+                            Create
+                        </button>
+                        <button wire:click="toggle_component_visibility"
+                            class="bg-red-700 rounded-lg w-1/2 p-2">
+                            Cancel
+                        </button>
+                    </div>
+                @else
+                    <button class="text-white bg-green-700 w-full rounded-lg p-2"
+                        wire:click="toggle_component_visibility"
+                        title="Add Task">
+                        +
                     </button>
-                    <button wire:click="toggle_component_visibility"
-                        class="bg-red-700 rounded-lg w-1/2 p-2">
-                        Cancel
-                    </button>
-                </div>
-            @else
-                <button class="text-white bg-green-700 w-full rounded-lg p-2"
-                    wire:click="toggle_component_visibility"
-                    title="Add Task">
-                    +
-                </button>
-            @endif
-        </div>
+                @endif
+            </div>
+        @endif
     </div>
 </div>

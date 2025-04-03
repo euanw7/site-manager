@@ -14,13 +14,23 @@ class UserTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $u = new User([
+        $admin = new User([
             'name' => "John Web",
             'email' => "john@web.com",
             'has_allowed_emails' => true,
             'password' => "password",
+            'is_admin' => true,
         ]);
-        $u->save();
+        $admin->save();
+
+        $user = new User([
+            'name' => "Stuart Little",
+            'email' => "slittle@web.com",
+            'has_allowed_emails' => true,
+            'password' => "password",
+            'is_admin' => false,
+        ]);
+        $user->save();
 
         $users = User::factory(10)->create();
         foreach ($users as $user)

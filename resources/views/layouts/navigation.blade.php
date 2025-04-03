@@ -18,9 +18,11 @@
                     <x-nav-link :href="route('joblistings.index')" :active="request()->routeIs('joblistings.index')">
                         {{ __('Jobs') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.menu')" :active="request()->routeIs('admin.menu')">
-                        {{ __('Admin') }}
-                    </x-nav-link>
+                    @if(Gate::allows('is.admin'))
+                        <x-nav-link :href="route('admin.menu')" :active="request()->routeIs('admin.menu')">
+                            {{ __('Admin') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 

@@ -6,6 +6,7 @@ use App\Models\JobListing;
 use App\Models\Site;
 use App\Models\User;
 use App\Models\UserRole;
+use Illuminate\Support\Facades\Gate;
 
 class JobListingController extends Controller
 {
@@ -23,6 +24,7 @@ class JobListingController extends Controller
      */
     public function create()
     {
+        if (!Gate::allows('is.admin')) abort(403, "Forbidden: This account is not an admin");
         return view('joblistings.create', 
         [
             'users' => User::orderBy('name', 'asc')->get(),
@@ -46,6 +48,7 @@ class JobListingController extends Controller
      */
     public function edit(string $id)
     {
+        if (!Gate::allows('is.admin')) abort(403, "Forbidden: This account is not an admin");
         return view('joblistings.edit', [
             'job_listing' => JobListing::findOrFail($id),
             'users' => User::orderBy('name', 'asc')->get(),
@@ -59,6 +62,7 @@ class JobListingController extends Controller
      */
     public function destroy(string $id)
     {
+        if (!Gate::allows('is.admin')) abort(403, "Forbidden: This account is not an admin");
         $job_listing = JobListing::findOrFail($id);
         $job_listing->delete();
         return redirect()->route('joblistings.index');
