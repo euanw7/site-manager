@@ -6,7 +6,7 @@
         }
     </style>
 
-    <div class="bg-gray-700 text-white shadow-md rounded-lg p-6 mb-6">
+    <div class="bg-gray-700 text-white shadow-md rounded-lg p-6 mt-5 mb-10">
         <div class="text-2xl font-bold mb-4">Task: {{ $job_task->title }}</div>
         <div class="text-lg mb-2">{{ $job_task->description }}</div>
         <div class="text-sm text-gray-300 mb-2">Start Date: {{ $job_task->start_date->format('d-m-Y') }}</div>
@@ -16,7 +16,7 @@
     </div>
 
     @if ($job_task->quality_critical)
-        <div class="bg-gray-700 text-white shadow-md rounded-lg p-6 mb-6">
+        <div class="bg-gray-700 text-white shadow-md rounded-lg p-6 mb-10">
             <div class="text-lg font-semibold mb-4">
                 Quality Control Management
             </div>
@@ -61,11 +61,13 @@
                 <div class="mb-2">Importance</div>
                 <div class="bg-gray-800 p-2 rounded-lg mb-4">{{$job_task->critical_control_point->importance}}</div>
 
-                <button class="text-white bg-green-700 w-full rounded-lg p-2"
-                    wire:click="toggle_edit_ccp_component_visibility"
-                    title="Set Critical Control Point">
-                    Edit Critical Control Point
-                </button>
+                @if(Gate::allows('is.admin'))
+                    <button class="text-white bg-green-700 w-full rounded-lg p-2"
+                        wire:click="toggle_edit_ccp_component_visibility"
+                        title="Set Critical Control Point">
+                        Edit Critical Control Point
+                    </button>
+                @endif
             @endif
         </div>
 
@@ -183,29 +185,33 @@
                                         <div>Tolerance: {{ $product_in_use->product_tolerance }}</div>
                                     </div>
                                     
-                                    <div class="float-right">
-                                        <button class="text-white bg-green-700 rounded-lg p-2  mr-2"
-                                            wire:click="editProductInUse({{ $product_in_use->id }})"
-                                            title="Edit Product">
-                                            Edit
-                                        </button>
-                                        <button class="text-white bg-red-700 rounded-lg p-2"
-                                        wire:click="deleteProductInUse({{ $product_in_use->id }})"
-                                        title="Delete Product">
-                                        Delete
-                                    </button>
-                                    </div>
+                                    @if(Gate::allows('is.admin'))
+                                        <div class="float-right">
+                                            <button class="text-white bg-green-700 rounded-lg p-2  mr-2"
+                                                wire:click="editProductInUse({{ $product_in_use->id }})"
+                                                title="Edit Product">
+                                                Edit
+                                            </button>
+                                            <button class="text-white bg-red-700 rounded-lg p-2"
+                                                wire:click="deleteProductInUse({{ $product_in_use->id }})"
+                                                title="Delete Product">
+                                                Delete
+                                            </button>
+                                        </div>
+                                    @endif
                                 </div>
                             @endif
                         </div>
                     @endforeach
 
-                    <div class="flow-root mt-4">
-                        <button wire:click="toggle_add_product_in_use_visibility"
-                            class="bg-green-700 text-white rounded-lg p-2 mr-2 float-right">
-                            Add Product
-                        </button>
-                    </div>
+                    @if(Gate::allows('is.admin'))
+                        <div class="flow-root mt-4">
+                            <button wire:click="toggle_add_product_in_use_visibility"
+                                class="bg-green-700 text-white rounded-lg p-2 mr-2 float-right">
+                                Add Product
+                            </button>
+                        </div>
+                    @endif
                 @endif
             </div>
         @endif

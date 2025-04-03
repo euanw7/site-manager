@@ -90,4 +90,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Site::class);
     }
+
+    public function is_admin()
+    {
+        return $this->is_admin;
+    }
 }
