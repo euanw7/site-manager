@@ -81,11 +81,11 @@
     <div class="mt-5">
         <button wire:click="add_phase"
             class="bg-green-700 rounded-lg w-10 h-10 mr-2">
-            +
+            Add Phase
         </button>
         <button wire:click="remove_phase"
             class="bg-red-700 rounded-lg w-10 h-10">
-            -
+            Remove Phase
         </button>
     </div>
 
@@ -100,11 +100,11 @@
     <div class="mt-5">
         <button wire:click="add_key_employee" 
             class="bg-green-700 rounded-lg w-10 h-10 text-2xl mr-2">
-            +
+            Add Key Employee
         </button>
         <button wire:click="remove_key_employee" 
             class="bg-red-700 rounded-lg w-10 h-10 text-2xl">
-            -
+            Remove Key Employee
         </button>
     </div>
 

@@ -9,7 +9,7 @@ class Site extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'address', 'employee_instructions'];
 
     public function job_listings()
     {

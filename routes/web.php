@@ -5,6 +5,7 @@ use App\Http\Controllers\JobListingController;
 use App\Http\Controllers\JobPhaseController;
 use App\Http\Controllers\JobTaskController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,7 +13,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard', ['jobListings' => Auth::User()->job_listings]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

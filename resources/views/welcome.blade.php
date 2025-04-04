@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="max-w-7xl mx-auto">
-        <div class="flex flex-row flow-root">
+        <div class="flex flex-row flow-root text-white">
             <div class="mr-10 float-left">
                 Welcome to Site Manager 360
             </div>
