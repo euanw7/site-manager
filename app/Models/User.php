@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_admin'
     ];
 
     /**
@@ -89,6 +90,11 @@ class User extends Authenticatable
     public function sites()
     {
         return $this->belongsToMany(Site::class);
+    }
+
+    public function job_listings()
+    {
+        return $this->belongsToMany(JobListing::class);
     }
 
     public function is_admin()

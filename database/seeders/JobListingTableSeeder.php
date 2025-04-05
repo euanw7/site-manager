@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\JobListing;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class JobListingTableSeeder extends Seeder
@@ -22,6 +23,7 @@ class JobListingTableSeeder extends Seeder
             'site_id' => 1,
         ]);
         $j->save();
+        $j->users()->attach(User::findOrFail(1));
 
         $j = new JobListing([
             'job_number' => 5678,
@@ -33,6 +35,7 @@ class JobListingTableSeeder extends Seeder
             'site_id' => 1,
         ]);
         $j->save();
+        $j->users()->attach(User::findOrFail(1));
 
         JobListing::factory(5)->create();
     }

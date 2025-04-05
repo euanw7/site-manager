@@ -57,4 +57,9 @@ class JobListing extends Model
     {
         return $this->belongsToMany(Audit::class);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

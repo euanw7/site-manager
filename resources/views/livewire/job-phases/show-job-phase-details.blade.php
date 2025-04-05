@@ -99,7 +99,7 @@
                     <button class="text-white bg-green-700 w-full rounded-lg p-2"
                         wire:click="toggle_component_visibility"
                         title="Add Task">
-                        +
+                        Add Task
                     </button>
                 @endif
             </div>

@@ -11,9 +11,9 @@
     <div class="text-2xl mb-3 text-white">Job Details</div>
     <div class="bg-gray-800 text-white border-4 border-gray-700 rounded-2xl p-4 mb-6">
         <div class="w-full">
-            <div class="flex flex-row mb-4">
+            <div class="flex flex-row mb-2">
                 <!-- Job Number -->
-                <div class="w-1/4 mr-1">
+                <div class="w-1/4 mr-1.5">
                     <input placeholder="Job Number..."
                         wire:model="job_number"
                         class="w-full rounded-tl-lg p-2 bg-gray-700 text-white border border-gray-600">
@@ -33,24 +33,21 @@
             </div>
 
             <!-- Description -->
-            <div class="mb-4">
+            <div class="mb-1.5">
                 <textarea placeholder="Description..."
                     wire:model="description"
                     rows="4"
                     maxlength="255"
-                    class="w-full resize-none p-2 bg-gray-700 text-white border border-gray-600 rounded-lg"></textarea>
+                    class="w-full resize-none p-2 bg-gray-700 text-white border border-gray-600"></textarea>
                 @error('description')
                     <div class="error-message">{{ $message }}</div>
                 @enderror
             </div>
 
-
-
-            
-            <div class="flex flex-row mb-4">
-                <div class="w-1/2 mr-1">
+            <div class="flex flex-row">
+                <div class="w-1/2 mr-1.5">
                     <!-- Start Date -->
-                    <div class="flex flex-row bg-gray-700 p-2 rounded-lg">
+                    <div class="flex flex-row bg-gray-700 p-2 rounded-bl-lg">
                         <div class="flex justify-center items-center p-1">
                             Start:
                         </div>
@@ -66,7 +63,7 @@
 
                 <div class="w-1/2">
                     <!-- End Date -->
-                    <div class="flex flex-row bg-gray-700 p-2 rounded-lg">
+                    <div class="flex flex-row bg-gray-700 p-2 rounded-br-lg">
                         <div class="flex justify-center items-center p-1">
                             End:
                         </div>
@@ -98,12 +95,12 @@
 
     <div class="mt-5">
         <button wire:click="add_phase"
-            class="bg-green-700 rounded-lg w-10 h-10 mr-2">
-            +
+            class="bg-green-700 rounded-lg mr-2 p-2">
+            Add Phase
         </button>
         <button wire:click="remove_phase"
-            class="bg-red-700 rounded-lg w-10 h-10">
-            -
+            class="bg-red-700 rounded-lg p-2">
+            Remove Phase
         </button>
     </div>
 
@@ -117,12 +114,12 @@
 
     <div class="mt-5">
         <button wire:click="add_key_employee" 
-            class="bg-green-700 rounded-lg w-10 h-10 text-2xl mr-2">
-            +
+            class="bg-green-700 rounded-lg p-2 mr-2">
+            Add Key Employee
         </button>
         <button wire:click="remove_key_employee" 
-            class="bg-red-700 rounded-lg w-10 h-10 text-2xl">
-            -
+            class="bg-red-700 rounded-lg p-2">
+            Remove Key Employee
         </button>
     </div>
 

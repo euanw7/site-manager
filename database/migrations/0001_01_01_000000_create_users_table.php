@@ -3,12 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\Notification;
-use App\Models\Audit;
-use App\Models\Report;
-use App\Models\Rejection;
-use App\Models\HoursWorked;
-use App\Models\UserTask;
 
 return new class extends Migration
 {

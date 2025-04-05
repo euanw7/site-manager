@@ -6,6 +6,7 @@ use App\Models\JobListing;
 use App\Models\JobPhase;
 use App\Models\UserAssignedRole;
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 
@@ -132,6 +133,8 @@ class CreateJobListing extends Component
                 'job_listing_id' => $j->id
             ]);
         }
+
+        $j->users()->attach(Auth::User());
 
         // Redirect to the new job listing's page
         return redirect()->route('joblistings.show', $j->id);
