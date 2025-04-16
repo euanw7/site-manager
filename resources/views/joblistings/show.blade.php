@@ -2,7 +2,7 @@
     title="{{ $job_listing->title }}">
     <x-slot:header>
         <div class="flex flex-row">
-            @if(Gate::allows('is.admin'))
+            @if(Gate::allows('is.admin') || Gate::allows('is.job.manager', $job_listing))
                 <a href="{{ route('joblistings.edit', ['id' => $job_listing->id]) }}" class="bg-green-700 text-white rounded-lg p-2 mr-4">
                     Edit Job
                 </a>
