@@ -152,7 +152,7 @@ class AdminMenu extends Component
         ]);
 
         UserRole::create([
-            'name' => $this->role_name,
+            'name' => $this->role_name
         ]);
 
         $this->reset(['role_name']);
