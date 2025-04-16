@@ -41,5 +41,16 @@ class AppServiceProvider extends ServiceProvider
                 
             return $user_assigned_role->user_role->name === 'Job Manager';
         });
+
+        Gate::define('is.assigned.to.job', function ($user, $job_listing) {
+            foreach ($job_listing->users as $assignedUser)
+            {
+                if ($assignedUser->name === $user->name)
+                {
+                    return true;
+                } 
+            }
+            return false;
+        });
     }
 }

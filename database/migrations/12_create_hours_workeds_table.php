@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('hours_workeds', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
             $table->double('hours', 3, 1);
             $table->boolean('approved')->default(false);
 
