@@ -37,7 +37,7 @@
     </div>
 
     <!-- Employees -->
-    <div class="bg-gray-700 text-white shadow-md rounded-lg p-6">
+    <div class="bg-gray-700 text-white shadow-md rounded-lg p-6 mb-6">
         <div class="text-lg font-semibold mb-4">Employees</div>
         @if($assigned_employees->isEmpty())
             <p class="text-gray-200">No employees assigned to this job listing.</p>
@@ -78,4 +78,96 @@
             </div>
         @endif
     </div>
+
+    <!-- Log Worked Hours -->
+    @if (Gate::allows('is.assigned.to.job', $job_listing))
+        <div class="bg-gray-700 text-white shadow-md rounded-lg p-6 mb-6">
+            <div class="text-lg font-semibold mb-4">Logged Worked Hours</div>
+
+            @if(empty($logged_hours))
+                <p class="text-gray-200">No hours logged yet.</p>
+            @else
+            <div class="flex justify-between mb-4">
+                <button wire:click="previousMonth" class="text-white rounded-lg px-4 py-2" disabled></button>
+                <div class="text-lg font-semibold">
+                    {{ $currentMonth->format('F Y') }}
+                </div>
+                <button wire:click="nextMonth" class="text-white rounded-lg px-4 py-2" disabled></button>
+            </div>
+                <div class="grid grid-cols-7 gap-2 text-gray-200">
+                    @php
+                        $daysInMonth = \Carbon\Carbon::now()->daysInMonth;
+                        $startOfMonth = \Carbon\Carbon::now()->startOfMonth();
+                    @endphp
+
+                    {{-- Weekday labels --}}
+                    @foreach(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as $day)
+                        <div class="text-center font-semibold">{{ $day }}</div>
+                    @endforeach
+
+                    {{-- Blank cells before first day --}}
+                    @for ($i = 0; $i < $startOfMonth->dayOfWeek; $i++)
+                        <div></div>
+                    @endfor
+
+                    {{-- Days of the month --}}
+                    @for ($day = 1; $day <= $daysInMonth; $day++)
+                        @php
+                            $currentDate = \Carbon\Carbon::now()->startOfMonth()->addDays($day - 1)->format('Y-m-d');
+                            $hours = collect($logged_hours)->firstWhere('date', $currentDate)['hours'] ?? null;
+                        @endphp
+
+                        <div class="border rounded-lg p-2 text-center {{ $hours ? 'bg-blue-600' : 'bg-gray-800' }}">
+                            <div class="text-sm font-bold">{{ $day }}</div>
+                            @if($hours)
+                                <div class="text-xs">{{ $hours }} hrs</div>
+                            @endif
+                        </div>
+                    @endfor
+                </div>
+            @endif
+        </div>
+
+        @if ($log_hours_component_visible)
+            <div class="bg-gray-700 text-white shadow-md rounded-lg p-6 mt-6">
+                <div class="text-lg font-semibold mb-4">Log Worked Hours</div>
+                
+                <!-- Date Input -->
+                <input 
+                    placeholder="Date..." 
+                    wire:model="log_date" 
+                    class="bg-gray-800 text-white rounded-lg p-2 mb-4 w-full" 
+                    type="date">
+                
+                <!-- Hours Worked Input -->
+                <input 
+                    placeholder="Hours Worked..." 
+                    wire:model="hours_worked" 
+                    class="bg-gray-800 text-white rounded-lg p-2 mb-4 w-full" 
+                    type="number" 
+                    min="0" 
+                    step="0.1">
+                
+                <!-- Confirm Button -->
+                <div class="flex flex-row gap-4">
+                    <button 
+                        wire:click="log_hours" 
+                        class="bg-green-700 text-white rounded-lg px-4 py-2 w-1/2">
+                        Confirm
+                    </button>
+                    <button 
+                        wire:click="toggle_log_worked_hours_component_visibility" 
+                        class="bg-red-700 text-white rounded-lg px-4 py-2 w-1/2">
+                        Canncel
+                    </button>
+                </div>
+            </div>
+        @else
+        <button 
+            wire:click="toggle_log_worked_hours_component_visibility" 
+            class="bg-green-700 text-white rounded-lg px-4 py-2 mb-4">
+            {{ $log_hours_component_visible ? 'Hide Log Hours' : 'Log Worked Hours' }}
+        </button>
+        @endif
+    @endif
 </div>

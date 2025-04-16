@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\HoursWorked;
 use App\Models\JobListing;
 use App\Models\User;
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class HoursWorkedFactory extends Factory
@@ -20,6 +21,7 @@ class HoursWorkedFactory extends Factory
             'hours' => fake()->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 50),
             'user_id' => fake()->numberBetween(1, User::count()),
             'job_listing_id' => fake()->numberBetween(1, JobListing::count()),
+            'date' => new DateTime(),
         ];
     }
 }
