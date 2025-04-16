@@ -163,13 +163,13 @@
             @if ($create_role_component_is_visible)
                 <div class="mt-3 p-4 bg-gray-700 rounded-lg border border-gray-600 space-y-3">
                     <div class="text-white font-semibold text-sm">Add New User Role</div>
-                    <input type="text" placeholder="User Role Name..." class="w-full rounded-lg p-2 bg-gray-800 text-white border border-gray-600" wire:model="user_role_name" />
+                    <input type="text" placeholder="User Role Name..." class="w-full rounded-lg p-2 bg-gray-800 text-white border border-gray-600" wire:model="role_name" />
                     @error('user_role_name')
                         <div class="text-red-500 text-sm">{{ $message }}</div>
                     @enderror
                 
                     <div class="flex flex-row gap-4">
-                        <button wire:click="create_user_role" class="bg-green-700 hover:bg-green-600 rounded-lg w-full p-2">
+                        <button wire:click="create_role" class="bg-green-700 hover:bg-green-600 rounded-lg w-full p-2">
                             Create User Role
                         </button>
                         <button wire:click="cancel('role')" class="bg-red-700 hover:bg-green-600 rounded-lg w-full p-2">

@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\JobListing;
 use App\Models\JobPhase;
+use App\Models\User;
 use App\Models\UserAssignedRole;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
@@ -127,11 +128,14 @@ class CreateJobListing extends Component
         // Create User Assigned Roles
         foreach($this->key_employee_inputs as $input)
         {
-            UserAssignedRole::create([
+            $ur = UserAssignedRole::create([
                 'user_id' => $input['user_id'],
                 'user_role_id' => $input['user_role_id'],
                 'job_listing_id' => $j->id
             ]);
+
+            $u = $ur->user();
+            $j->users()->attach($u);
         }
 
         $j->users()->attach(Auth::User());

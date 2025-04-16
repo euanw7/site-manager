@@ -23,5 +23,23 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('is.admin', function ($user) {
             return $user->is_admin;
         });
+
+        Gate::define('is.quality.manager', function ($user, $job_listing) {
+            $user_assigned_role = $job_listing
+                ->user_assigned_roles()
+                ->where('user_id', $user->id)
+                ->first();
+                
+            return $user_assigned_role->user_role->name === 'Quality Manager';
+        });
+
+        Gate::define('is.job.manager', function ($user, $job_listing) {
+            $user_assigned_role = $job_listing
+                ->user_assigned_roles()
+                ->where('user_id', $user->id)
+                ->first();
+                
+            return $user_assigned_role->user_role->name === 'Job Manager';
+        });
     }
 }
