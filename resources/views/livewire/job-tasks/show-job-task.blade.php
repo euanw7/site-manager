@@ -215,8 +215,170 @@
                 @endif
             </div>
         @endif
+    @endif
 
-        <!-- User View -->
-        <!-- Add quality control data -->
+    @if (Gate::allows('is.assigned.to.job', $job_task->job_phase->job_listing))
+        <!-- If there are no submissions yet -->
+        @if ($this->job_task->job_submissions()->count() == 0)
+            <!-- Submit tasks for approval -->
+            <div class="bg-gray-700 text-white shadow-md rounded-lg p-6 mb-10">
+                <div class="text-lg font-semibold mb-4">
+                    Submit task for approval
+                </div>
+
+                <!-- Description Input -->
+                <div class="mb-4">
+                    <label for="description" class="block text-sm font-medium">Description</label>
+                    <textarea id="description" 
+                            wire:model="approval_description" 
+                            placeholder="Enter a description..." 
+                            class="w-full p-2 bg-gray-800 text-white border border-gray-600 rounded-lg"></textarea>
+                    @error('approval_description')
+                        <div class="error-message">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Image Upload -->
+                <div class="mb-4">
+                    <label for="image" class="block text-sm font-medium">Upload Image</label>
+                    <input type="file" 
+                        id="image" 
+                        wire:model="approval_image" 
+                        class="w-full p-2 bg-gray-800 text-white border border-gray-600 rounded-lg">
+                    @error('approval_image')
+                        <div class="error-message">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                @if ($this->job_task->quality_critical)
+                    <!-- Product Coverage -->
+                    <div class="mb-4">
+                        <label for="double" class="block text-sm font-medium">Product Coverage</label>
+                        <input type="number" 
+                            id="double" 
+                            step="0.01" 
+                            wire:model="approval_product_coverage" 
+                            placeholder="Enter the product coverage..." 
+                            class="w-full p-2 bg-gray-800 text-white border border-gray-600 rounded-lg">
+                        @error('approval_product_coverage')
+                            <div class="error-message">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <!-- Product Usage -->
+                    <div class="mb-4">
+                        <label for="double" class="block text-sm font-medium">Product Usage</label>
+                        <input type="number" 
+                            id="double" 
+                            step="0.01" 
+                            wire:model="approval_product_usage" 
+                            placeholder="Enter the product usage..." 
+                            class="w-full p-2 bg-gray-800 text-white border border-gray-600 rounded-lg">
+                        @error('approval_product_usage')
+                            <div class="error-message">{{ $message }}</div>
+                        @enderror
+                    </div>
+                @endif
+
+                <!-- Submit Button -->
+                <div class="mt-4">
+                    <button wire:click="submit_for_approval"
+                            class="bg-green-700 text-white rounded-lg p-2">
+                        Submit for Approval
+                    </button>
+                </div>
+            </div>
+        <!-- If there is a submission -->
+        
+        @else
+            <div class="bg-gray-700 text-white shadow-md rounded-lg p-6 mb-10">
+                <!-- If the submission hasn't been approved or rejected -->
+                @if (!$this->submission->approved && !$this->submission->rejected)
+                    <div class="text-lg font-semibold mb-6">
+                        Submission awaiting approval...
+                    </div>
+                @else
+                    <!-- If the submission has been approved -->
+                    @if ($this->submission->approved)
+                        <div class="text-lg font-semibold mb-6">
+                            Task approved
+                        </div>
+                        <div>
+                            Message:
+                        </div>
+                        <div>
+                            {{ $this->submission->approval_message }}
+                        </div>
+                    @endif
+                        
+                    <!-- If the submission has been rejected -->
+                    @if ($this->submission->rejected)
+                        <div class="text-lg font-semibold mb-6">
+                            Task rejected
+                        </div>
+                        <div>
+                            Message:
+                        </div>
+                        <div>
+                            {{ $this->submission->message}}
+                        </div>
+                        <button wire:click="new_submission" class="bg-red-700 hover:bg-red-600 rounded-lg w-full p-2 my-6">
+                            New Submission
+                        </button>
+                    @endif
+                @endif
+
+                <div class="mb-6">
+                    <div>
+                        Description:
+                    </div>
+                    {{ $this->submission->approval_description }}
+                </div>
+
+                <div>
+                    <div>
+                        Image:
+                    </div>
+                    <img class="w-full" src="{{ asset('/storage/' . $this->submission->approval_image) }}" />
+                </div>
+
+                @if ($this->job_task->quality_critical)
+                    <div>
+                        <div>
+                            Product Usage:
+                        </div>
+                        {{ $this->submission->approval_product_usage }}
+                    </div>
+                    <div>
+                        <div>
+                            Product Coverage:
+                        </div>
+                        {{ $this->submission->approval_product_coverage }}
+                    </div>
+                @endif
+
+                @if (Gate::allows('is.job.manager', $this->job_task->job_phase->job_listing) && !$this->submission->approved && !$this->submission->rejected)
+                    <div class="text-white font-semibold text-lg mt-5 mb-2">Approve job task</div>
+                    <textarea 
+                        placeholder="Message..." 
+                        class="w-full rounded-lg p-2 bg-gray-800 text-white border border-gray-600 mb-5" 
+                        wire:model="approval_message" 
+                        rows="2">
+                    </textarea>
+                    @error('approval_message')
+                        <div class="text-red-500 text-sm">{{ $message }}</div>
+                    @enderror
+                
+                    <div class="flex flex-row gap-4">
+                        <button wire:click="approve('approved')" class="bg-green-700 hover:bg-green-600 rounded-lg w-full p-2">
+                            Approve
+                        </button>
+                        <button wire:click="approve('rejected')" class="bg-red-700 hover:bg-red-600 rounded-lg w-full p-2">
+                            Reject
+                        </button>
+                    </div>
+                @endif
+            </div>
+        @endif
     @endif
 </div>

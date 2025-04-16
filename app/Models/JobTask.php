@@ -34,6 +34,11 @@ class JobTask extends Model
         return $this->belongsTo(CriticalControlPoint::class);
     }
 
+    public function job_submissions()
+    {
+        return $this->hasMany(JobSubmission::class);
+    }
+
     public function rejections(): MorphMany
     {
         return $this->morphMany(Rejection::class, 'rejectable');

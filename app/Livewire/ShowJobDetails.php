@@ -5,7 +5,6 @@ namespace App\Livewire;
 use App\Models\JobListing;
 use App\Models\User;
 use Carbon\Carbon;
-use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -126,5 +125,17 @@ class ShowJobDetails extends Component
     public function previous_month()
     {
         $this->currentMonth = $this->currentMonth->subMonth();
+    }
+
+    public function close_job()
+    {
+        $this->job_listing->is_active = false;
+        $this->job_listing->save();
+    }
+
+    public function open_job()
+    {
+        $this->job_listing->is_active = true;
+        $this->job_listing->save();
     }
 }

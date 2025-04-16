@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('description', 255);
             $table->dateTime('start_date');
             $table->dateTime('end_date');
+            $table->boolean('isFinished')->default(false);
             
             $table->foreignIdFor(JobListing::class)->cascadeOnDelete()->cascadeOnUpdate();
 
