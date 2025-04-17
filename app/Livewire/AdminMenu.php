@@ -2,12 +2,15 @@
 
 namespace App\Livewire;
 
+use App\Models\HoursWorked;
+use App\Models\JobListing;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Site;
 use App\Models\User;
 use App\Models\UserRole;
 use Illuminate\Support\Facades\Hash;
+use Shuchkin\SimpleXLSXGen;
 
 class AdminMenu extends Component
 {
@@ -37,14 +40,21 @@ class AdminMenu extends Component
     public string $product_name;
     public string $product_description;
 
+    // EXPORT HOURS
+    public $selectedEmployee = 'all';
+    public $selectedJob = 'all';
+    public $startDate;
+    public $endDate;
+
     public function render()
     {
         return view('livewire.admin-menu', 
         [
-            'products' => Product::latest()->get(),
-            'sites' => Site::latest()->get(),
-            'users' => User::latest()->get(),
-            'user_roles' => UserRole::latest()->get()
+            'products' => Product::orderBy('name')->get(),
+            'sites' => Site::orderBy('name')->get(),
+            'users' => User::orderBy('name')->get(),
+            'user_roles' => UserRole::orderBy('name')->get(),
+            'job_listings' => JobListing::orderBy('job_number')->get(),
         ]);
     }
 
@@ -174,4 +184,55 @@ class AdminMenu extends Component
         $this->reset(['product_name', 'product_description']);
         $this->toggle_component_visibility('product');
     }
+
+    public function export_worked_hours()
+    {
+        $query = HoursWorked::with(['job_listing', 'user'])
+            ->join('job_listings', 'hours_workeds.job_listing_id', '=', 'job_listings.id');
+
+        if ($this->selectedEmployee !== 'all') {
+            $query->where('hours_workeds.user_id', $this->selectedEmployee);
+        }
+
+        if ($this->selectedJob !== 'all') {
+            $query->where('hours_workeds.job_listing_id', $this->selectedJob);
+        }
+
+        if ($this->startDate) {
+            $query->whereDate('hours_workeds.date', '>=', $this->startDate);
+        }
+
+        if ($this->endDate) {
+            $query->whereDate('hours_workeds.date', '<=', $this->endDate);
+        }
+
+        $query->orderBy('job_listings.job_number');
+
+        $hours_worked = $query->get();
+
+        $data = [
+            ['Job Number', 'Employee Name', 'Date', 'Hours Worked', 'Email']
+        ];
+
+        foreach ($hours_worked as $entry) {
+            $data[] = [
+                $entry->job_listing->job_number ?? 'N/A',
+                $entry->user->name ?? 'N/A',
+                $entry->date->format('Y-m-d'),
+                $entry->hours,
+                $entry->user->email ?? 'N/A',
+            ];
+        }
+
+        $directory = public_path('exports');
+        if (!file_exists($directory)) {
+            mkdir($directory, 0775, true);
+        }
+
+        $filepath = $directory . '/hours_worked.xlsx';
+        SimpleXLSXGen::fromArray($data)->saveAs($filepath);
+
+        return response()->download($filepath);
+    }
+
 }
