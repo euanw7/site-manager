@@ -2,6 +2,9 @@
     title="{{ $job_listing->title }}">
     <x-slot:header>
         <div class="flex flex-row">
+            <a href="{{ url('/export-pdf/' . $job_listing->id) }}" class="bg-blue-700 text-white rounded-lg p-2 mr-4">
+                Download PDF
+            </a>
             @if(Gate::allows('is.admin') || Gate::allows('is.job.manager', $job_listing))
                 <a href="{{ route('joblistings.edit', ['id' => $job_listing->id]) }}" class="bg-green-700 text-white rounded-lg p-2 mr-4">
                     Edit Job
