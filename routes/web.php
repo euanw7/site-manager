@@ -5,6 +5,8 @@ use App\Http\Controllers\JobListingController;
 use App\Http\Controllers\JobPhaseController;
 use App\Http\Controllers\JobTaskController;
 use App\Http\Controllers\ProfileController;
+use App\Models\JobListing;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +34,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/jobtasks/{id}', [JobTaskController::class, 'show'])->name('jobtasks.show');
 
     Route::get('/admin', [AdminController::class, 'adminMenu'])->name('admin.menu');
+
+    Route::get('/export-pdf/{id}', function($id) {
+        $job_listing = JobListing::findOrFail($id);
+        $pdf = Pdf::loadView('pdf.report', ['job_listing' => $job_listing]);
+        return $pdf->download('report-' . $id . '.pdf');
+    });
 });
 
 require __DIR__.'/auth.php';
