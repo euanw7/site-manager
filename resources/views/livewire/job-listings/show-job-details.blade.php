@@ -40,7 +40,7 @@
     <div class="bg-gray-700 text-white shadow-md rounded-lg p-6 mb-6">
         <div class="text-lg font-semibold mb-4">Employees</div>
         @if($assigned_employees->isEmpty())
-            <p class="text-gray-200">No employees assigned to this job listing.</p>
+            <p class="text-gray-200">No employees assigned to this job.</p>
         @else
             @foreach($assigned_employees as $employee)
             <div class="flex justify-between items-center mb-2">
@@ -169,5 +169,19 @@
             {{ $log_hours_component_visible ? 'Hide Log Hours' : 'Log Worked Hours' }}
         </button>
         @endif
+    @endif
+
+    @if ($this->job_listing->is_active)
+        <button 
+            wire:click="close_job" 
+            class="w-full bg-red-700 text-white rounded-lg px-4 py-2 mb-4 mt-10">
+            Close Job
+        </button>
+    @else
+        <button 
+            wire:click="open_job" 
+            class="w-full bg-green-700 text-white rounded-lg px-4 py-2 mb-4 mt-10">
+            Open Job
+        </button>
     @endif
 </div>

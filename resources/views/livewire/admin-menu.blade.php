@@ -37,7 +37,7 @@
                         <button wire:click="create_product" class="bg-green-700 hover:bg-green-600 rounded-lg w-full p-2">
                             Create Product
                         </button>
-                        <button wire:click="cancel('product')" class="bg-red-700 hover:bg-green-600 rounded-lg w-full p-2">
+                        <button wire:click="cancel('product')" class="bg-red-700 hover:bg-red-600 rounded-lg w-full p-2">
                             Cancel
                         </button>
                     </div>
@@ -83,7 +83,7 @@
                         <button wire:click="create_site" class="bg-green-700 hover:bg-green-600 rounded-lg w-full p-2">
                             Create Site
                         </button>
-                        <button wire:click="cancel('site')" class="bg-red-700 hover:bg-green-600 rounded-lg w-full p-2">
+                        <button wire:click="cancel('site')" class="bg-red-700 hover:bg-red-600 rounded-lg w-full p-2">
                             Cancel
                         </button>
                     </div>
@@ -136,7 +136,7 @@
                         <button wire:click="create_user" class="bg-green-700 hover:bg-green-600 rounded-lg w-full p-2">
                             Create User
                         </button>
-                        <button wire:click="cancel('user')" class="bg-red-700 hover:bg-green-600 rounded-lg w-full p-2">
+                        <button wire:click="cancel('user')" class="bg-red-700 hover:bg-red-600 rounded-lg w-full p-2">
                             Cancel
                         </button>
                     </div>
@@ -172,7 +172,7 @@
                         <button wire:click="create_role" class="bg-green-700 hover:bg-green-600 rounded-lg w-full p-2">
                             Create User Role
                         </button>
-                        <button wire:click="cancel('role')" class="bg-red-700 hover:bg-green-600 rounded-lg w-full p-2">
+                        <button wire:click="cancel('role')" class="bg-red-700 hover:bg-red-600 rounded-lg w-full p-2">
                             Cancel
                         </button>
                     </div>
