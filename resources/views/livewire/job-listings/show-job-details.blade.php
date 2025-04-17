@@ -171,17 +171,19 @@
         @endif
     @endif
 
-    @if ($this->job_listing->is_active)
-        <button 
-            wire:click="close_job" 
-            class="w-full bg-red-700 text-white rounded-lg px-4 py-2 mb-4 mt-10">
-            Close Job
-        </button>
-    @else
-        <button 
-            wire:click="open_job" 
-            class="w-full bg-green-700 text-white rounded-lg px-4 py-2 mb-4 mt-10">
-            Open Job
-        </button>
+    @if (Gate::allows('is.admin') || Gate::allows('is.job.manager', $job_listing))
+        @if ($this->job_listing->is_active)
+            <button 
+                wire:click="close_job" 
+                class="w-full bg-red-700 text-white rounded-lg px-4 py-2 mb-4 mt-10">
+                Close Job
+            </button>
+        @else
+            <button 
+                wire:click="open_job" 
+                class="w-full bg-green-700 text-white rounded-lg px-4 py-2 mb-4 mt-10">
+                Open Job
+            </button>
+        @endif
     @endif
 </div>

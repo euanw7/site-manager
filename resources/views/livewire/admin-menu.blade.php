@@ -5,6 +5,7 @@
             <x-tab data-tab-target="#sitesTab" wire:click="setActiveTab('sitesTab')" class="{{ $activeTab === 'sitesTab' ? 'border-blue-500 text-blue-500' : 'border-gray-500 text-gray-500'}}">Sites</x-tab>
             <x-tab data-tab-target="#usersTab" wire:click="setActiveTab('usersTab')" class="{{ $activeTab === 'usersTab' ? 'border-blue-500 text-blue-500' : 'border-gray-500 text-gray-500'}}">Users</x-tab>
             <x-tab data-tab-target="#rolesTab" wire:click="setActiveTab('rolesTab')" class="{{ $activeTab === 'rolesTab' ? 'border-blue-500 text-blue-500' : 'border-gray-500 text-gray-500'}}">Roles</x-tab>
+            <x-tab data-tab-target="#hoursTab" wire:click="setActiveTab('hoursTab')" class="{{ $activeTab === 'hoursTab' ? 'border-blue-500 text-blue-500' : 'border-gray-500 text-gray-500'}}">Export Hours</x-tab>
         </ul>
         <hr class="border-b border-gray-700 mb-4"></hr>
     </div>
@@ -184,6 +185,42 @@
                     Add User Role
                 </button>
             @endif
+        </div>
+
+        <!-- 4. Export Worked Hours -->
+        <div id="hoursTab" class="tab-content {{ $activeTab === 'hoursTab' ? '' : 'hidden'}}">
+            <div class="text-lg font-bold mb-3">Export Hours</div>
+
+            <div class="mb-3">
+                <label class="block font-semibold">Employee:</label>
+                <select wire:model="selectedEmployee" class="text-black border rounded p-2 w-auto min-w-[315px]">
+                    <option value="all">All Employees</option>
+                    @foreach($users as $user)
+                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="block font-semibold">Job:</label>
+                <select wire:model="selectedJob" class="text-black border rounded p-2 w-auto min-w-[315px]">
+                    <option value="all">All Jobs</option>
+                    @foreach($job_listings as $job)
+                        <option value="{{ $job->id }}">{{ $job->job_number }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="block font-semibold">Date Range:</label>
+                <input type="date" wire:model="startDate" class="border rounded p-2 mr-2 text-black">
+                <input type="date" wire:model="endDate" class="border rounded p-2 text-black">
+            </div>
+
+            <button wire:click="export_worked_hours"
+                class="bg-blue-700 text-white rounded-lg p-2">
+                Export Worked Hours
+            </button>
         </div>
     </div>
 </div>

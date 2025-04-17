@@ -29,8 +29,9 @@ class AppServiceProvider extends ServiceProvider
                 ->user_assigned_roles()
                 ->where('user_id', $user->id)
                 ->first();
-                
-            return $user_assigned_role->user_role->name === 'Quality Manager';
+            
+            if ($user_assigned_role) return $user_assigned_role->user_role->name === 'Quality Manager';
+            else return false;
         });
 
         Gate::define('is.job.manager', function ($user, $job_listing) {
@@ -39,7 +40,8 @@ class AppServiceProvider extends ServiceProvider
                 ->where('user_id', $user->id)
                 ->first();
                 
-            return $user_assigned_role->user_role->name === 'Job Manager';
+            if ($user_assigned_role) return $user_assigned_role->user_role->name === 'Job Manager';
+            else return false;
         });
 
         Gate::define('is.assigned.to.job', function ($user, $job_listing) {
