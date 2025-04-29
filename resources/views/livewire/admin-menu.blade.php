@@ -193,7 +193,7 @@
 
             <div class="mb-3">
                 <label class="block font-semibold">Employee:</label>
-                <select wire:model="selectedEmployee" class="text-black border rounded p-2 w-auto min-w-[315px]">
+                <select wire:model="selectedEmployee" class="text-black bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-[310px]">
                     <option value="all">All Employees</option>
                     @foreach($users as $user)
                         <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -203,7 +203,7 @@
 
             <div class="mb-3">
                 <label class="block font-semibold">Job:</label>
-                <select wire:model="selectedJob" class="text-black border rounded p-2 w-auto min-w-[315px]">
+                <select wire:model="selectedJob" class="text-black bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-[310px]">
                     <option value="all">All Jobs</option>
                     @foreach($job_listings as $job)
                         <option value="{{ $job->id }}">{{ $job->job_number }}</option>
@@ -213,8 +213,8 @@
 
             <div class="mb-3">
                 <label class="block font-semibold">Date Range:</label>
-                <input type="date" wire:model="startDate" class="border rounded p-2 mr-2 text-black">
-                <input type="date" wire:model="endDate" class="border rounded p-2 text-black">
+                <input type="date" wire:model="startDate" class="text-black bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-42">
+                <input type="date" wire:model="endDate" class="text-black bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-42">
             </div>
 
             <button wire:click="export_worked_hours"
